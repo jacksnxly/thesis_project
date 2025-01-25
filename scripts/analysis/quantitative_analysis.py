@@ -9,10 +9,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from statsmodels.stats.multitest import multipletests
 from statsmodels.api import OLS, add_constant
+from statsmodels.formula.api import ols
+from patsy import dmatrices
+from sklearn.linear_model import LassoCV
+from sklearn.preprocessing import StandardScaler
 
 # Ensure results directory exists
 import os
-os.makedirs('results/h1-h4', exist_ok=True)
+os.makedirs('results/quantitative_analysis', exist_ok=True)
 
 df = pd.read_csv("data/processed/final_h1_data.csv")
 
@@ -111,7 +115,7 @@ significant_mask_corrected = pval_corrected_matrix < alpha
 significant_corr_corrected = pearson_corr_matrix.where(significant_mask_corrected)
 
 # Save corrected results
-significant_corr_corrected.to_csv('results/h1-h4/significant_pearson_correlations_fdr.csv')
+significant_corr_corrected.to_csv('results/quantitative_analysis/significant_pearson_correlations_fdr.csv')
 
 # Create subplots for comparison
 fig, axes = plt.subplots(1, 2, figsize=(24, 12))
@@ -163,15 +167,15 @@ plt.figtext(0.5, 1.05, 'Digital Presence Metrics vs Funding Success',
            ha='center', va='top', fontsize=18, weight='bold')
 
 plt.tight_layout()
-plt.savefig('results/h1-h4/correlation_comparison.png', dpi=400, bbox_inches='tight')
+plt.savefig('results/quantitative_analysis/correlation_comparison.png', dpi=400, bbox_inches='tight')
 plt.close()
 
 # Format and save results
 print("\nPlatform-Specific Funding Correlations:")
 print(results_df.to_markdown(index=False))
 
-results_df.to_csv('results/h1-h4/platform_correlations.csv', index=False)
-pearson_corr_matrix.to_csv('results/h1-h4/full_pearson_matrix.csv')
+results_df.to_csv('results/quantitative_analysis/platform_correlations.csv', index=False)
+pearson_corr_matrix.to_csv('results/quantitative_analysis/full_pearson_matrix.csv')
 
 platforms = {
     'continuous': ['twitter', 'instagram', 'linkedin', 'ceo_connections', 'articles', 'overall_digital_presence'],
@@ -224,7 +228,7 @@ for platform in platforms['continuous']:
 
     plt.suptitle(f'{platform.capitalize()} vs Funding Success', y=1.02, fontsize=14, weight='bold')
     plt.tight_layout()
-    plt.savefig(f'results/h1-h4/{platform}_funding_jointplot.png', dpi=300)
+    plt.savefig(f'results/quantitative_analysis/{platform}_funding_jointplot.png', dpi=300)
     plt.close()
 
     # Partial dependence plot with bootstrap CI
@@ -307,7 +311,7 @@ for platform in platforms['continuous']:
     plt.gca().spines['right'].set_visible(False)
     plt.title(f'{platform.capitalize()} Impact Analysis\n(PDP: {title_suffix})', fontsize=13, pad=20, weight='bold')
     plt.legend()
-    plt.savefig(f'results/h1-h4/{platform}_partial_dependence.png', dpi=400, bbox_inches='tight')
+    plt.savefig(f'results/quantitative_analysis/{platform}_partial_dependence.png', dpi=400, bbox_inches='tight')
     plt.close()
     
 # Analyze binary platform (CEO connections dummy)
@@ -331,7 +335,7 @@ plt.text(0.05, 0.95,
         verticalalignment='top',
         bbox=dict(facecolor='white', alpha=0.8, edgecolor='none'))
 
-plt.savefig('results/h1-h4/ceo_connections_dummy_boxplot.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/quantitative_analysis/ceo_connections_dummy_boxplot.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Partial dependence plot for binary feature
@@ -362,7 +366,7 @@ plt.gca().spines['top'].set_visible(False)
 plt.gca().spines['right'].set_visible(False)
 plt.title('CEO Connections Impact Analysis\n(Partial Dependence Plot)', 
          fontsize=13, pad=20, weight='bold')
-plt.savefig('results/h1-h4/ceo_connections_dummy_partial_dependence.png', dpi=400, bbox_inches='tight')
+plt.savefig('results/quantitative_analysis/ceo_connections_dummy_partial_dependence.png', dpi=400, bbox_inches='tight')
 plt.close()
 
 # Calculate partial correlations controlling for company age, industry, stage, and location
@@ -467,7 +471,7 @@ def format_results(row):
 results_df['formatted_result'] = results_df.apply(format_results, axis=1)
 
 # Save updated results
-results_df.to_csv('results/h1-h4/controlled_correlations.csv', index=False)
+results_df.to_csv('results/quantitative_analysis/controlled_correlations.csv', index=False)
 
 print("\nDigital Presence vs Funding Success (FDR-corrected):")
 print(results_df[['metric', 'type', 'formatted_result', 'partial_rho_full_model', 'p_value_fdr']]
@@ -500,7 +504,9 @@ print(vif_data.to_markdown(index=False))
 # Create regression plots
 plt.figure(figsize=(10,6))
 sns.barplot(x='partial_rho_full_model', y='metric', data=results_df,
-            palette='viridis', edgecolor='black')
+            hue='metric',
+            palette='viridis', 
+            legend=False)
 
 plt.axvline(0, color='gray', linestyle='--')
 plt.xlabel("Partial Correlation Coefficient (Controlled for Industry, Stage, Location)")
@@ -509,8 +515,104 @@ plt.title("Adjusted Correlation with Funding Amount\n(Controlling for Key Confou
          fontsize=14, pad=20)
 
 plt.tight_layout()
-plt.savefig('results/h1-h4/controlled_correlations_plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/quantitative_analysis/controlled_correlations_plot.png', dpi=300, bbox_inches='tight')
 plt.close()
+
+try:
+    # Cluster states into regions with boolean conditions
+    df['region'] = np.select(
+        [
+            (df['berlin'] == 1) | (df['brandenburg'] == 1),  # East
+            (df['baden_wuerttemberg'] == 1) | (df['bayern'] == 1),  # South
+            (df['hamburg'] == 1) | (df['niedersachsen'] == 1),  # North
+            (df['nordrhein_westfalen'] == 1) | (df['hessen'] == 1)  # West
+        ],
+        ['East', 'South', 'North', 'West'],
+        default='Other'
+    )
+
+    # Cluster industries into sectors with boolean conditions
+    df['sector'] = np.select(
+        [
+            (df['information_technology'] == 1) | (df['web3_blockchain'] == 1),
+            (df['health_care'] == 1) | (df['consumer_discretionary'] == 1),
+            (df['financials'] == 1) | (df['real_estate'] == 1),
+            (df['industrials'] == 1) | (df['materials'] == 1)
+        ],
+        ['Tech', 'Consumer', 'Finance', 'Industrial'],
+        default='Other'
+    )
+
+    # Build formula with categorical clusters
+    model_formula = (
+        "total_funding_log ~ twitter_log + instagram_log + linkedin_log + "
+        "ceo_connections_log + ceo_connections_dummy + articles_log + "
+        "overall_digital_presence + age_log + startup_stage + "
+        "C(region) + C(sector)"
+    )
+
+    # Verify formula syntax
+    print("Final formula:", model_formula)
+    
+    # Fit model
+    full_model = ols(model_formula, data=df).fit()
+    
+    # Create coefficient plot
+    plt.figure(figsize=(10,6))
+    coefs = full_model.params.drop('Intercept')
+    cis = full_model.conf_int().drop('Intercept')
+
+    sns.pointplot(x=coefs.values, y=coefs.index, 
+                 join=False, color='#2E86C1')
+    plt.errorbar(x=coefs.values, y=coefs.index,
+                xerr=[coefs.values - cis[0], cis[1] - coefs.values],
+                fmt='none', color='black')
+
+    plt.axvline(0, color='gray', linestyle='--')
+    plt.xlabel("Regression Coefficient (β)")
+    plt.title("Multiple Regression: Digital Presence vs Funding\n(Controlling for Industry, Stage, Location)",
+             fontsize=14, pad=20)
+    plt.tight_layout()
+    plt.savefig('results/quantitative_analysis/multiple_regression_coefficients.png', dpi=300)
+    plt.close()
+    
+    # Save results
+    with open('results/quantitative_analysis/robust_regression_results.txt', 'w') as fh:
+        fh.write(full_model.summary().as_text())
+        
+except Exception as e:
+    print(f"\nRegression failed: {str(e)}")
+    print("Using regularized regression instead...")
+    
+    # Fallback to Lasso with standardized features
+    X = df[['twitter_log', 'instagram_log', 'linkedin_log',
+           'ceo_connections_log', 'ceo_connections_dummy',
+           'articles_log', 'overall_digital_presence',
+           'age_log', 'startup_stage']]
+    y = df['total_funding_log']
+    
+    # Standardize features
+    X_scaled = StandardScaler().fit_transform(X)
+    
+    # Fit Lasso model
+    lasso = LassoCV(cv=5, random_state=42).fit(X_scaled, y)
+    
+    # Create coefficient plot for Lasso
+    plt.figure(figsize=(10,6))
+    coefs = pd.Series(lasso.coef_, index=X.columns)
+    significant_coefs = coefs[coefs != 0]
+    
+    sns.barplot(x=significant_coefs.values, y=significant_coefs.index, 
+                color='#2E86C1')
+    plt.axvline(0, color='gray', linestyle='--')
+    plt.xlabel("Lasso Coefficient (β)")
+    plt.title("Regularized Regression: Significant Digital Presence Effects",
+             fontsize=14, pad=20)
+    plt.tight_layout()
+    plt.savefig('results/quantitative_analysis/lasso_coefficients.png', dpi=300)
+    plt.close()
+    
+    print("Lasso selected features:", significant_coefs.index.tolist())
 
 def bootstrap_spearman_ci(metric, n_iterations=1000):
     """Calculate bootstrap 95% CI for Spearman correlation"""
@@ -545,7 +647,7 @@ for metric in metrics_to_bootstrap:
 
 # Save results to CSV
 bootstrap_df = pd.DataFrame(bootstrap_results).T
-bootstrap_df.to_csv('results/h1-h4/bootstrap_confidence_intervals.csv')
+bootstrap_df.to_csv('results/quantitative_analysis/bootstrap_confidence_intervals.csv')
 
 # Create forest plot
 plt.figure(figsize=(12, 8))
@@ -587,7 +689,7 @@ plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['top'].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('results/h1-h4/bootstrap_forest_plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/quantitative_analysis/bootstrap_forest_plot.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Print results
@@ -599,4 +701,4 @@ print(pd.DataFrame(bootstrap_results).T[['estimate', 'ci_lower', 'ci_upper']]
       .to_markdown(index=False, floatfmt=".2f"))
 
 # Save corrected results
-significant_corr_corrected.to_csv('results/h1-h4/significant_pearson_correlations_fdr.csv')
+significant_corr_corrected.to_csv('results/quantitative_analysis/significant_pearson_correlations_fdr.csv')

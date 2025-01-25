@@ -1,0 +1,62 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:      total_funding_log   R-squared:                       0.242
+Model:                            OLS   Adj. R-squared:                  0.205
+Method:                 Least Squares   F-statistic:                     6.598
+Date:                Sat, 25 Jan 2025   Prob (F-statistic):           6.65e-26
+Time:                        21:37:00   Log-Likelihood:                -2405.1
+No. Observations:                 761   AIC:                             4882.
+Df Residuals:                     725   BIC:                             5049.
+Df Model:                          35                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                       3.3677      4.351      0.774      0.439      -5.174      11.910
+twitter_log                    -0.0387      0.101     -0.382      0.702      -0.237       0.160
+instagram_log                   0.0461      0.093      0.497      0.620      -0.136       0.228
+linkedin_log                    0.1987      0.151      1.316      0.189      -0.098       0.495
+ceo_connections_log            -0.2368      0.202     -1.170      0.242      -0.634       0.161
+ceo_connections_dummy           0.6445      0.910      0.709      0.479      -1.141       2.430
+articles_log                    1.2123      0.239      5.075      0.000       0.743       1.681
+overall_digital_presence        0.2363      0.052      4.524      0.000       0.134       0.339
+age_log                        -2.0747      0.707     -2.935      0.003      -3.463      -0.687
+startup_stage                   3.3260      0.403      8.255      0.000       2.535       4.117
+Q('industrials')                0.4363      3.014      0.145      0.885      -5.481       6.354
+Q('information_technology')     0.2319      2.952      0.079      0.937      -5.563       6.027
+Q('communication_services')     0.6032      3.147      0.192      0.848      -5.576       6.782
+Q('real_estate')               -1.9161      3.574     -0.536      0.592      -8.932       5.100
+Q('financials')                 0.6503      3.077      0.211      0.833      -5.391       6.691
+Q('consumer_discretionary')     0.6469      3.068      0.211      0.833      -5.377       6.670
+Q('web3_blockchain')            0.6822      3.129      0.218      0.827      -5.461       6.825
+Q('health_care')                1.4463      3.218      0.449      0.653      -4.872       7.765
+Q('materials')                  4.2089      4.497      0.936      0.350      -4.620      13.037
+Q('consumer_staples')           4.9377      3.721      1.327      0.185      -2.367      12.242
+Q('other')                      5.1394      4.509      1.140      0.255      -3.713      13.992
+Q('utilities')                  1.7357      3.440      0.505      0.614      -5.018       8.489
+Q('baden_wuerttemberg')         1.7494      3.103      0.564      0.573      -4.342       7.841
+Q('bayern')                     1.9211      3.065      0.627      0.531      -4.096       7.939
+Q('berlin')                     2.2630      3.036      0.746      0.456      -3.697       8.223
+Q('brandenburg')                4.1415      3.509      1.180      0.238      -2.748      11.031
+Q('bremen')                     5.7538      6.741      0.854      0.394      -7.480      18.988
+Q('hamburg')                    2.6754      3.125      0.856      0.392      -3.459       8.810
+Q('hessen')                     1.0118      3.180      0.318      0.750      -5.231       7.255
+Q('mecklenburg_vorpommern')     8.3834      6.685      1.254      0.210      -4.742      21.508
+Q('niedersachsen')              2.3980      3.617      0.663      0.508      -4.704       9.499
+Q('nordrhein_westfalen')        1.2230      3.089      0.396      0.692      -4.841       7.287
+Q('rheinland_pfalz')           -3.0193      3.606     -0.837      0.403     -10.098       4.059
+Q('saarland')                   5.4114      4.030      1.343      0.180      -2.501      13.323
+Q('sachsen')                    0.8496      3.468      0.245      0.807      -5.958       7.658
+Q('sachsen_anhalt')            -1.8332      4.605     -0.398      0.691     -10.873       7.207
+Q('schleswig_holstein')        -0.6405      4.243     -0.151      0.880      -8.971       7.690
+==============================================================================
+Omnibus:                       89.387   Durbin-Watson:                   1.843
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               85.461
+Skew:                          -0.753   Prob(JB):                     2.77e-19
+Kurtosis:                       2.347   Cond. No.                     1.08e+16
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 6.5e-28. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
