@@ -1,0 +1,143 @@
+=== Sentiment Distribution ===
+sentiment
+neutral    18
+Name: count, dtype: int64
+
+=== Key Themes ===
+Theme 1: digital, online, presence, important, far, entrepreneur, neutraluncertain, platform, startup
+Theme 2: yes, german, digital, presence, linkedin, probably, founder, less, dont
+Theme 3: slightly, increased, increase, medium, social, significantly, agree, stay, investor
+
+=== Example Quotes ===
+
+Column: In your own words, how would you define “digital presence” for an entrepreneur?
+digital presence entrepreneur collective representation identity brand activity online includes everything personal business website social medium profile online portfolio content interaction visibility digital platform show digital world influencing potential client partner audience perceive strong digital presence isnt visible consistent authentic engaging way aligns goal value
+
+google person pop thats digital presence easily able navigate individual person social return tell achievement challenge importantly stand
+
+activity social medium blog podcasts etc
+
+Column: Rate the importance of an entrepreneur’s digital presence when making early-stage investment decisions (Pre-seed to Series A).
+
+
+
+
+
+
+Column: In your opinion, how has the importance of digital presence changed over the last 5 years for early-stage funding?
+decreased slightly
+
+increased slightly
+
+increased significantly
+
+Column: Why do you think this change has occurred?
+prevalence digital medium
+
+digitalization
+
+today investor extensive online research taking meeting company digital footprint often act initial filter polished website evidence customer engagement social platform positive online mention help signal legitimacy market traction said digital presence carry weight still complement rather outweighs core criterion strong team product vision market potential
+
+Column: Which single component of an entrepreneur’s digital presence do you believe most strongly correlates with successful VC funding outcomes in Germany?
+linkedin activity expansiveness network
+
+track record
+
+thought leadership
+
+Column: Please share an example (if any) of when an entrepreneur’s digital presence influenced your decision positively or negatively
+
+
+
+
+
+
+Column: On a scale from 1 (Not at all) to 5 (Very much), how much do you believe German cultural factors (e.g., risk aversion, traditional networking norms) influence your evaluation of an entrepreneur’s digital presence?
+
+
+
+
+
+
+Column: In the German context, which cultural factors do you find most critical when evaluating an entrepreneur’s credibility online?
+answer never case
+
+dont think cultural factor maybe less opinionated regarded germany
+
+germany credibility online hinge trust professionalism transparency authentic expertisedriven communication
+
+Column: How do traditional in-person networking and references compare to an entrepreneur’s digital presence when evaluating them in the German VC scene?
+inpersonnetworkbased reference somewhat important
+
+inpersonnetworkbased reference far important
+
+inpersonnetworkbased reference far important
+
+Column: Have you ever discounted an entrepreneur’s digital presence because it didn’t align with German cultural or professional norms (e.g., perceived as over-promotional)? If so, please provide an example.
+yes
+
+
+
+
+
+Column: Based on your experience, do you believe German VCs place a different level of importance on entrepreneurs’ digital presence than international VCs do?
+yes german vcs place less importance
+
+
+
+yes german vcs place less importance
+
+Column: Have you co-invested with non-German VCs? If yes, did you observe any differences in how digital presence was evaluated?
+yes
+
+havent
+
+yes fact almost coinvestments without german german slow speed main difference cant keep
+
+Column: From your perspective, what are the key differences (if any) in evaluating digital presence between German VCs and international VCs?
+enough experience tell
+
+dont know
+
+
+
+Column: Do you foresee a convergence of German VC evaluation criteria with global standards regarding digital presence in the near future?
+probably yes
+
+neutraluncertain
+
+neutraluncertain
+
+Column: Overall, do you think an entrepreneur’s digital presence can compensate for limited in-person connections in the German VC ecosystem?
+agree
+
+strongly disagree
+
+disagree
+
+Column: Please elaborate.
+personal connection essetial trust
+
+personal impression way important
+
+mean digital presence big linkedin network actually used compensate lot nice instagram compensate
+
+Column: Looking ahead 3–5 years, how do you see the importance of an entrepreneur’s digital presence evolving for pre-seed to Series A funding decisions in Germany?
+decrease significantly
+
+stay
+
+increase slightly
+
+Column: What factors will drive this change?
+course
+
+
+
+
+
+Column: Is there anything else you’d like to share about how you evaluate an entrepreneur’s digital presence in the German market?
+
+
+
+
