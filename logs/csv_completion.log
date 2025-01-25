@@ -1,0 +1,4 @@
+2025-01-22 11:55:09,528 - INFO - Created backup at: data/merged_raw_data_backup_20250122-115509.csv
+2025-01-22 11:55:09,532 - ERROR - CSV loading error: Missing required columns: Website
+2025-01-22 11:57:06,008 - INFO - Created backup at: data/merged_raw_data_backup_20250122-115706.csv
+2025-01-22 11:57:06,010 - ERROR - CSV loading error: Missing required columns: website

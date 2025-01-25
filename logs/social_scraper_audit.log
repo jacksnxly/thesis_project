@@ -1,0 +1,287 @@
+2025-01-22 17:15:46,153 - INFO - Initializing scraping session
+2025-01-22 17:15:46,158 - INFO - ====== WebDriver manager ======
+2025-01-22 17:15:46,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:15:46,480 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:15:46,527 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 17:15:47,279 - INFO - WebDriver initialized
+2025-01-22 17:16:04,813 - INFO - Twitter login successful
+2025-01-22 17:16:18,005 - INFO - LinkedIn login successful
+2025-01-22 17:16:18,820 - INFO - Loaded CSV with 129 rows
+2025-01-22 17:16:18,820 - INFO - Skipping completed row: Plurality Network
+2025-01-22 17:16:18,821 - INFO - Successfully updated CSV after row 1
+2025-01-22 17:16:18,821 - INFO - START Processing row: Plato
+2025-01-22 17:16:19,997 - INFO - Enter Twitter followers for Plato (AI suggests N/A):
+2025-01-22 17:16:56,626 - INFO - Enter Instagram followers for Plato (AI suggests N/A):
+2025-01-22 17:17:31,158 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(54, 'Connection reset by peer')': /session/0dfafa1af5312c7a2db7486cec2daa26
+2025-01-22 17:17:31,160 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106073390>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/0dfafa1af5312c7a2db7486cec2daa26
+2025-01-22 17:17:31,161 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106073250>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/0dfafa1af5312c7a2db7486cec2daa26
+2025-01-22 17:21:41,646 - INFO - Initializing scraping session
+2025-01-22 17:21:41,653 - INFO - ====== WebDriver manager ======
+2025-01-22 17:21:41,810 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:21:41,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:21:41,916 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 17:21:42,704 - INFO - WebDriver initialized
+2025-01-22 17:22:00,004 - INFO - Twitter login successful
+2025-01-22 17:22:12,423 - INFO - LinkedIn login successful
+2025-01-22 17:22:13,265 - INFO - Loaded CSV with 129 rows
+2025-01-22 17:22:13,265 - INFO - Skipping completed row: Plurality Network
+2025-01-22 17:22:13,266 - INFO - Successfully updated CSV after row 1
+2025-01-22 17:22:13,266 - INFO - START Processing row: Plato
+2025-01-22 17:22:14,514 - INFO - Enter Twitter followers for Plato (AI suggests N/A):
+2025-01-22 17:23:16,731 - INFO - Enter Instagram followers for Plato (AI suggests N/A):
+2025-01-22 17:23:28,072 - INFO - Enter LinkedIn followers for Plato (AI suggests N/A):
+2025-01-22 17:24:02,763 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 17:24:24,011 - ERROR - Sales Navigator access failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104b8f7a4 cxxbridge1$str$ptr + 2589716
+1   chromedriver                        0x0000000104b8805c cxxbridge1$str$ptr + 2559180
+2   chromedriver                        0x000000010472bf5c cxxbridge1$string$len + 88260
+3   chromedriver                        0x0000000104771024 cxxbridge1$string$len + 371084
+4   chromedriver                        0x00000001047ab1a8 cxxbridge1$string$len + 609040
+5   chromedriver                        0x0000000104764e40 cxxbridge1$string$len + 321448
+6   chromedriver                        0x0000000104765a88 cxxbridge1$string$len + 324592
+7   chromedriver                        0x0000000104b5a8a0 cxxbridge1$str$ptr + 2372880
+8   chromedriver                        0x0000000104b5dbc4 cxxbridge1$str$ptr + 2385972
+9   chromedriver                        0x0000000104b416e0 cxxbridge1$str$ptr + 2270032
+10  chromedriver                        0x0000000104b5e484 cxxbridge1$str$ptr + 2388212
+11  chromedriver                        0x0000000104b33324 cxxbridge1$str$ptr + 2211732
+12  chromedriver                        0x0000000104b790a0 cxxbridge1$str$ptr + 2497808
+13  chromedriver                        0x0000000104b7921c cxxbridge1$str$ptr + 2498188
+14  chromedriver                        0x0000000104b87cd0 cxxbridge1$str$ptr + 2558272
+15  libsystem_pthread.dylib             0x0000000196e9b2e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000196e960fc thread_start + 8
+
+2025-01-22 17:24:24,019 - INFO - Successfully updated CSV after row 2
+2025-01-22 17:24:24,020 - INFO - Skipping completed row: Faircado
+2025-01-22 17:24:24,022 - INFO - Successfully updated CSV after row 3
+2025-01-22 17:24:24,022 - INFO - START Processing row: Pagent
+2025-01-22 17:24:25,272 - INFO - Enter Twitter followers for Pagent (AI suggests N/A):
+2025-01-22 17:24:50,776 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:22,172 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:22,272 - WARNING - Invalid numeric input received
+2025-01-22 17:34:22,272 - INFO - Enter Twitter followers for Pagent (AI suggests N/A):
+2025-01-22 17:34:34,434 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:44,500 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:45,181 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:45,673 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:47,142 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:51,898 - WARNING - Invalid numeric input received
+2025-01-22 17:34:51,898 - INFO - Enter Twitter followers for Pagent (AI suggests N/A):
+2025-01-22 17:34:58,885 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,041 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,173 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,349 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,483 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,665 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:34:59,858 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:35:00,071 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:35:00,222 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:35:00,444 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:35:00,834 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:35:01,015 - INFO - Shutdown signal received - saving progress...
+2025-01-22 17:42:45,408 - INFO - Initializing scraping session
+2025-01-22 17:42:45,414 - INFO - ====== WebDriver manager ======
+2025-01-22 17:42:45,595 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:42:45,670 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 17:42:45,719 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 17:42:46,472 - INFO - WebDriver initialized
+2025-01-22 18:43:15,372 - INFO - Initializing scraping session
+2025-01-22 18:43:15,393 - INFO - ====== WebDriver manager ======
+2025-01-22 18:43:15,580 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 18:43:15,661 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 18:43:15,712 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 18:43:16,567 - INFO - WebDriver initialized
+2025-01-22 18:43:33,920 - INFO - Twitter login successful
+2025-01-22 18:43:46,577 - INFO - LinkedIn login successful
+2025-01-22 18:43:47,503 - INFO - Loaded CSV with 129 rows
+2025-01-22 18:43:47,503 - INFO - Skipping completed row: Plurality Network
+2025-01-22 18:43:47,504 - INFO - Successfully updated CSV after row 1
+2025-01-22 18:43:47,504 - INFO - START Processing row: Plato
+2025-01-22 18:43:48,733 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-22 18:43:48,737 - INFO - Enter Twitter followers for Plato (AI suggests profile: N/A):
+2025-01-22 18:44:45,098 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:08,619 - WARNING - Invalid numeric input received
+2025-01-22 18:45:08,619 - INFO - Enter Twitter followers for Plato (AI suggests profile: N/A):
+2025-01-22 18:45:10,781 - WARNING - Invalid numeric input received
+2025-01-22 18:45:10,782 - INFO - Enter Twitter followers for Plato (AI suggests profile: N/A):
+2025-01-22 18:45:12,971 - WARNING - Invalid numeric input received
+2025-01-22 18:45:12,971 - INFO - Enter Twitter followers for Plato (AI suggests profile: N/A):
+2025-01-22 18:45:14,275 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:23,042 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:23,500 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:23,801 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:24,024 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:45:24,235 - INFO - Shutdown signal received - saving progress...
+2025-01-22 18:57:04,864 - INFO - Initializing scraping session
+2025-01-22 18:57:04,887 - INFO - ====== WebDriver manager ======
+2025-01-22 18:57:05,305 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 18:57:05,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 18:57:05,423 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 18:57:06,209 - INFO - WebDriver initialized
+2025-01-22 18:57:24,966 - INFO - Twitter login successful
+2025-01-22 18:57:37,516 - INFO - LinkedIn login successful
+2025-01-22 18:57:38,868 - INFO - Loaded CSV with 129 rows
+2025-01-22 18:57:38,868 - INFO - Skipping completed row: Plurality Network
+2025-01-22 18:57:38,869 - INFO - Successfully updated CSV after row 1
+2025-01-22 18:57:38,869 - INFO - START Processing row: Plato
+2025-01-22 18:57:40,094 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 18:57:49,242 - INFO - Enter Twitter followers for Plato (AI suggests profile: https://twitter.com/plato_data):
+2025-01-22 18:58:15,040 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 18:58:28,120 - INFO - Enter Instagram followers for Plato (AI suggests profile: https://www.instagram.com/plato_alpha/):
+2025-01-22 18:58:55,896 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 18:59:20,536 - INFO - Enter LinkedIn followers for Plato (AI suggests profile: https://www.linkedin.com/company/plato-dm-technologies-gmbh):
+2025-01-22 19:00:08,949 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:00:30,461 - ERROR - Sales Navigator access failed: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001010ff7a4 cxxbridge1$str$ptr + 2589716
+1   chromedriver                        0x00000001010f805c cxxbridge1$str$ptr + 2559180
+2   chromedriver                        0x0000000100c9bf5c cxxbridge1$string$len + 88260
+3   chromedriver                        0x0000000100ce1024 cxxbridge1$string$len + 371084
+4   chromedriver                        0x0000000100d1b1a8 cxxbridge1$string$len + 609040
+5   chromedriver                        0x0000000100cd4e40 cxxbridge1$string$len + 321448
+6   chromedriver                        0x0000000100cd5a88 cxxbridge1$string$len + 324592
+7   chromedriver                        0x00000001010ca8a0 cxxbridge1$str$ptr + 2372880
+8   chromedriver                        0x00000001010cdbc4 cxxbridge1$str$ptr + 2385972
+9   chromedriver                        0x00000001010b16e0 cxxbridge1$str$ptr + 2270032
+10  chromedriver                        0x00000001010ce484 cxxbridge1$str$ptr + 2388212
+11  chromedriver                        0x00000001010a3324 cxxbridge1$str$ptr + 2211732
+12  chromedriver                        0x00000001010e90a0 cxxbridge1$str$ptr + 2497808
+13  chromedriver                        0x00000001010e921c cxxbridge1$str$ptr + 2498188
+14  chromedriver                        0x00000001010f7cd0 cxxbridge1$str$ptr + 2558272
+15  libsystem_pthread.dylib             0x0000000196e9b2e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000196e960fc thread_start + 8
+
+2025-01-22 19:00:30,466 - INFO - Skipping completed row: Plato
+2025-01-22 19:00:30,468 - INFO - Successfully updated CSV after row 2
+2025-01-22 19:00:30,468 - INFO - Skipping completed row: Faircado
+2025-01-22 19:00:30,470 - INFO - Successfully updated CSV after row 3
+2025-01-22 19:00:30,470 - INFO - START Processing row: Pagent
+2025-01-22 19:00:31,419 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:00:40,059 - INFO - Enter Twitter followers for Pagent (AI suggests profile: https://twitter.com/pagentai):
+2025-01-22 19:02:11,907 - INFO - User requested quit via 'q' command
+2025-01-22 19:02:13,143 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:02:17,577 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:25:20,715 - INFO - Initializing scraping session
+2025-01-22 19:25:20,715 - ERROR - Backup failed: 'SocialScraper' object has no attribute 'df'
+2025-01-22 19:28:16,947 - INFO - Initializing scraping session
+2025-01-22 19:28:16,947 - WARNING - Skipping backup - DataFrame is empty
+2025-01-22 19:28:16,969 - INFO - ====== WebDriver manager ======
+2025-01-22 19:28:17,166 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 19:28:17,250 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 19:28:17,297 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 19:28:18,045 - INFO - WebDriver initialized
+2025-01-22 19:28:35,084 - INFO - Twitter login successful
+2025-01-22 19:28:48,797 - INFO - LinkedIn login successful
+2025-01-22 19:28:49,743 - INFO - Loaded CSV with 129 rows
+2025-01-22 19:28:49,743 - INFO - Skipping completed row: Plurality Network
+2025-01-22 19:28:49,746 - INFO - Successfully saved CSV after row 1
+2025-01-22 19:28:49,746 - INFO - START Processing row: Plato
+2025-01-22 19:28:51,382 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:28:54,450 - INFO - Enter Twitter followers for Plato (AI suggests profile: https://twitter.com/plato_data):
+2025-01-22 19:29:13,852 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:29:17,503 - INFO - Enter Instagram followers for Plato (AI suggests profile: https://www.instagram.com/plato_alpha/):
+2025-01-22 19:29:23,757 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:29:26,911 - INFO - Enter LinkedIn followers for Plato (AI suggests profile: https://de.linkedin.com/company/platoapp):
+2025-01-22 19:29:36,468 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:29:37,110 - INFO - Enter CEO Connections count for Plato:
+2025-01-22 19:30:04,364 - INFO - Successfully saved CSV after row 2
+2025-01-22 19:30:04,365 - INFO - Skipping completed row: Faircado
+2025-01-22 19:30:04,366 - INFO - Successfully saved CSV after row 3
+2025-01-22 19:30:04,366 - INFO - START Processing row: Pagent
+2025-01-22 19:30:05,513 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:30:09,127 - INFO - Enter Twitter followers for Pagent (AI suggests profile: https://twitter.com/pagentai):
+2025-01-22 19:30:35,994 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:30:39,758 - INFO - Enter Instagram followers for Pagent (AI suggests profile: N/A):
+2025-01-22 19:30:43,204 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:30:45,895 - INFO - Enter LinkedIn followers for Pagent (AI suggests profile: https://www.linkedin.com/company/pagent-ai):
+2025-01-22 19:30:55,222 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:30:55,679 - INFO - Enter CEO Connections count for Pagent:
+2025-01-22 19:31:20,749 - INFO - Successfully saved CSV after row 4
+2025-01-22 19:31:20,749 - INFO - Skipping completed row: GEMESYS
+2025-01-22 19:31:20,751 - INFO - Successfully saved CSV after row 5
+2025-01-22 19:31:20,751 - INFO - Skipping completed row: Hoola
+2025-01-22 19:31:20,753 - INFO - Successfully saved CSV after row 6
+2025-01-22 19:31:20,753 - INFO - START Processing row: ai|coustics
+2025-01-22 19:31:21,864 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:31:25,435 - INFO - Enter Twitter followers for ai|coustics (AI suggests profile: https://ai-coustics.com/):
+2025-01-22 19:31:41,179 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:31:46,147 - INFO - Enter Instagram followers for ai|coustics (AI suggests profile: N/A):
+2025-01-22 19:31:55,324 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:31:59,238 - INFO - Enter LinkedIn followers for ai|coustics (AI suggests profile: https://www.linkedin.com/company/ai-coustics):
+2025-01-22 19:32:15,337 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:32:15,712 - INFO - Enter CEO Connections count for ai|coustics:
+2025-01-22 19:32:50,650 - INFO - Successfully saved CSV after row 7
+2025-01-22 19:32:50,650 - INFO - Skipping completed row: Text Cortex AI
+2025-01-22 19:32:50,652 - INFO - Successfully saved CSV after row 8
+2025-01-22 19:32:50,652 - INFO - Skipping completed row: autarc
+2025-01-22 19:32:50,653 - INFO - Successfully saved CSV after row 9
+2025-01-22 19:32:50,653 - INFO - Skipping completed row: Twain
+2025-01-22 19:32:50,654 - INFO - Successfully saved CSV after row 10
+2025-01-22 19:32:50,654 - INFO - Skipping completed row: ARC Intelligence
+2025-01-22 19:32:50,655 - INFO - Successfully saved CSV after row 11
+2025-01-22 19:32:50,656 - INFO - Skipping completed row: ExoMatter
+2025-01-22 19:32:50,657 - INFO - Successfully saved CSV after row 12
+2025-01-22 19:32:50,657 - INFO - START Processing row: Key Ward
+2025-01-22 19:32:52,038 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:32:56,997 - INFO - Enter Twitter followers for Key Ward (AI suggests profile: https://twitter.com/unlockwithkeyai):
+2025-01-22 19:33:11,922 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:33:16,145 - INFO - Enter Instagram followers for Key Ward (AI suggests profile: https://www.instagram.com/alliekmiller/?hl=en):
+2025-01-22 19:33:37,218 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:33:41,889 - INFO - Enter LinkedIn followers for Key Ward (AI suggests profile: https://de.linkedin.com/company/keyward):
+2025-01-22 19:34:16,810 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:34:17,235 - INFO - Enter CEO Connections count for Key Ward:
+2025-01-22 19:34:34,992 - INFO - Successfully saved CSV after row 13
+2025-01-22 19:34:34,993 - INFO - Skipping completed row: Zive
+2025-01-22 19:34:34,994 - INFO - Successfully saved CSV after row 14
+2025-01-22 19:34:34,994 - INFO - START Processing row: hexafarms
+2025-01-22 19:34:36,369 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:34:40,508 - INFO - Enter Twitter followers for hexafarms (AI suggests profile: https://twitter.com/HexaFarms):
+2025-01-22 19:35:06,248 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:35:10,157 - INFO - Enter Instagram followers for hexafarms (AI suggests profile: https://www.instagram.com/hexafarms_su/):
+2025-01-22 19:35:21,047 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:29,415 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:30,705 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:30,886 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,064 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,212 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,467 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,634 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,828 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:31,994 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:36:32,389 - INFO - Shutdown signal received - saving progress...
+2025-01-22 19:48:15,309 - INFO - Initializing scraping session
+2025-01-22 19:48:15,309 - WARNING - Skipping backup - DataFrame is empty
+2025-01-22 19:48:15,331 - INFO - ====== WebDriver manager ======
+2025-01-22 19:48:15,494 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 19:48:15,548 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-22 19:48:15,604 - INFO - Driver [/Users/jacksonly/.wdm/drivers/chromedriver/mac64/132.0.6834.83/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-22 19:48:16,423 - INFO - WebDriver initialized
+2025-01-22 19:48:33,972 - INFO - Twitter login successful
+2025-01-22 19:48:50,687 - INFO - LinkedIn login successful
+2025-01-22 19:48:51,821 - INFO - Loaded CSV with 129 rows
+2025-01-22 19:48:51,821 - INFO - Skipping completed row: Plurality Network
+2025-01-22 19:48:51,824 - INFO - Successfully saved CSV after row 1
+2025-01-22 19:48:51,824 - INFO - START Processing row: Plato
+2025-01-22 19:48:53,005 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:48:56,638 - INFO - Enter Twitter followers for Plato (AI suggests profile: https://twitter.com/plato_data):
+2025-01-22 19:49:12,200 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:49:16,501 - INFO - Enter Instagram followers for Plato (AI suggests profile: https://www.instagram.com/plato_alpha/):
+2025-01-22 19:49:59,499 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:50:02,741 - INFO - Enter LinkedIn followers for Plato (AI suggests profile: https://de.linkedin.com/company/platoapp):
+2025-01-22 19:50:08,056 - INFO - Accessing Sales Navigator for CEO connections
+2025-01-22 19:50:08,706 - INFO - Enter CEO Connections count for Plato:
+2025-01-22 19:50:28,813 - INFO - Successfully saved CSV after row 2
+2025-01-22 19:50:28,813 - INFO - Skipping completed row: Faircado
+2025-01-22 19:50:28,814 - INFO - Successfully saved CSV after row 3
+2025-01-22 19:50:28,814 - INFO - START Processing row: Pagent
+2025-01-22 19:50:29,825 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-01-22 19:50:33,268 - INFO - Enter Twitter followers for Pagent (AI suggests profile: https://twitter.com/pagentai):
+2025-01-22 19:50:35,476 - INFO - Quit requested via Ctrl-C - saving progress...
+2025-01-22 19:50:35,481 - WARNING - ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')), retrying in 5 seconds...
+2025-01-22 19:50:40,486 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x108774690>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9/url
+2025-01-22 19:50:40,487 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x108774910>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9/url
+2025-01-22 19:50:40,489 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ef442b0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9/url
+2025-01-22 19:50:40,490 - WARNING - HTTPConnectionPool(host='localhost', port=52059): Max retries exceeded with url: /session/94db720dd2f37fe912c7aa1514f3e7f9/url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ef44510>: Failed to establish a new connection: [Errno 61] Connection refused')), retrying in 10 seconds...
+2025-01-22 19:50:42,618 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ef21490>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9
+2025-01-22 19:50:42,620 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10833b8a0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9
+2025-01-22 19:50:42,623 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10833bac0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/94db720dd2f37fe912c7aa1514f3e7f9
