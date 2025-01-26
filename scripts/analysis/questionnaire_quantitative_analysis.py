@@ -33,6 +33,16 @@ question_mappings = {
                 "Increased Significantly": 5
             }
         },
+        "Compared to other markets, how do you perceive the German approach to risk in early-stage investments?": {
+            "name": "Risk Perception",
+            "mapping": {
+                "Significantly less risk-taking": 1,
+                "Slightly less risk-taking": 2,
+                "About the same": 3,
+                "Slightly more risk-taking": 4,
+                "Significantly more risk-taking": 5
+            }
+        },
         "To what extent do you analyze or verify an entrepreneur’s online footprint (e.g., checking profiles, reading articles, viewing social media) before deciding to invest?": {
             "name": "Verification Frequency",
             "mapping": {

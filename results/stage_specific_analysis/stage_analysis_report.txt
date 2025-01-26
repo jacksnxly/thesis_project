@@ -1,0 +1,23 @@
+Hypothesis H7a Results:
+Digital Presence vs Funding Correlation by Stage:
+              mean                                         ci    n
+Pre-Seed  0.153914  [0.06182048325492261, 0.2511836034194576]  369
+Series A  0.151399  [-0.1327907707946143, 0.4218133318609231]   56
+
+Hypothesis H7b Results:
+Business Metrics vs Digital Presence Comparison:
+      stage                 metric  business_corr                                  business_ci  digital_corr                                   digital_ci    n  difference  sig_better
+0  Pre-Seed                age_log      -0.173166  [-0.2653284660150898, -0.08243262817584845]      0.155245    [0.0544960746942902, 0.24489370209905606]  369   -0.328411       False
+1  Pre-Seed           articles_log       0.287957    [0.17936052017978468, 0.3853419278538033]      0.156287    [0.05187122048400255, 0.2513635079279034]  369    0.131670       False
+2  Pre-Seed    ceo_connections_log       0.134082   [0.02564004598491645, 0.22496525349345958]      0.154331    [0.05347798137765654, 0.2547650529436952]  369   -0.020249       False
+3  Pre-Seed  ceo_connections_dummy       0.111530  [0.010233119462856495, 0.20153237934790041]      0.156867  [0.061128093000234376, 0.24756038553850757]  369   -0.045336       False
+4  Series A                age_log      -0.083593   [-0.3630075769737555, 0.19773461708563125]      0.148828  [-0.12327833860580925, 0.41483372684692976]   56   -0.232421       False
+5  Series A           articles_log       0.532048    [0.33417287633109755, 0.7084800504017776]      0.155586  [-0.14005741822738763, 0.44398203669399416]   56    0.376462       False
+6  Series A    ceo_connections_log      -0.013534   [-0.37387273790676884, 0.3426207630016946]      0.157924   [-0.10885020617500128, 0.4150067169351965]   56   -0.171459       False
+7  Series A  ceo_connections_dummy       0.002393   [-0.33268751977610656, 0.3752393225900026]      0.148906    [-0.1253679219874804, 0.4240595918182477]   56   -0.146513       False
+
+H7a Difference Test: 0.01 (95% CI: [-0.30424964  0.30758608])
+H7b Significant Advantages (business > digital):
+Empty DataFrame
+Columns: [stage, metric, business_corr, business_ci, digital_corr, digital_ci, n, difference, sig_better]
+Index: []

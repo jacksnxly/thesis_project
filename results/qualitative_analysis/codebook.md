@@ -11,7 +11,7 @@ _Digital Presence in the German Startup Ecosystem_
 | Code                | Description                                | Example Quote                                                                 |
 | ------------------- | ------------------------------------------ | ----------------------------------------------------------------------------- |
 | `DEFINITION`        | How respondents define "digital presence"  | _"Sum of all ways you appear online: website, social media, content sharing"_ |
-| `COMPONENTS`        | Key elements of effective digital presence | _"LinkedIn connections, press coverage, GitHub activity"_                     |
+| `COMPONENTS`        | Key elements of effective digital presence | _"LinkedIn, Social Media, Podcasts, Blogs, News"_                             |
 | `PLATFORM_PRIORITY` | Valued platforms (LinkedIn > Instagram)    | _"A big LinkedIn network compensates; Instagram cannot"_                      |
 
 ---

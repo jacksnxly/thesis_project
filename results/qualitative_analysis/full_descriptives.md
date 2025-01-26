@@ -7,6 +7,7 @@
 | Digital Thought Leadership  |      18 | 3.38889 | 1.0369   |     1 |  3    |   3.5 |  4    |     5 |      4 |
 | Cultural Factors Influence  |      18 | 3.16667 | 1.33945  |     1 |  3    |   3.5 |  4    |     5 |      4 |
 | 5yr Digital Change          |      18 | 3.88889 | 1.13183  |     1 |  3.25 |   4   |  5    |     5 |      4 |
+| Risk Perception             |      18 | 1.83333 | 0.985184 |     1 |  1    |   2   |  2    |     5 |      2 |
 | Verification Frequency      |      18 | 3       | 0.766965 |     1 |  3    |   3   |  3    |     4 |      3 |
 | In-person vs Digital        |      18 | 2.33333 | 1.32842  |     1 |  1    |   2   |  3    |     5 |      1 |
 | Future Importance           |      18 | 3.44444 | 0.921777 |     1 |  3    |   4   |  4    |     5 |      4 |

@@ -1,43 +1,43 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:      total_funding_log   R-squared:                       0.223
-Model:                            OLS   Adj. R-squared:                  0.206
-Method:                 Least Squares   F-statistic:                     13.34
-Date:                Sat, 25 Jan 2025   Prob (F-statistic):           1.10e-31
-Time:                        21:51:06   Log-Likelihood:                -2414.3
-No. Observations:                 761   AIC:                             4863.
-Df Residuals:                     744   BIC:                             4941.
-Df Model:                          16                                         
+Dep. Variable:      total_funding_log   R-squared:                       0.226
+Model:                            OLS   Adj. R-squared:                  0.208
+Method:                 Least Squares   F-statistic:                     12.77
+Date:                Sun, 26 Jan 2025   Prob (F-statistic):           1.02e-31
+Time:                        23:49:07   Log-Likelihood:                -2412.8
+No. Observations:                 761   AIC:                             4862.
+Df Residuals:                     743   BIC:                             4945.
+Df Model:                          17                                         
 Covariance Type:            nonrobust                                         
 ============================================================================================
                                coef    std err          t      P>|t|      [0.025      0.975]
 --------------------------------------------------------------------------------------------
-Intercept                    6.9242      1.344      5.153      0.000       4.286       9.562
-C(region)[T.North]           0.2814      0.840      0.335      0.738      -1.367       1.930
-C(region)[T.Other]          -1.9831      1.001     -1.980      0.048      -3.949      -0.017
-C(region)[T.South]          -0.4577      0.529     -0.865      0.387      -1.497       0.581
-C(region)[T.West]           -1.1137      0.637     -1.749      0.081      -2.364       0.137
-C(sector)[T.Finance]        -0.7562      1.085     -0.697      0.486      -2.887       1.374
-C(sector)[T.Industrial]     -0.4997      0.969     -0.516      0.606      -2.402       1.402
-C(sector)[T.Other]           0.5999      1.075      0.558      0.577      -1.511       2.711
-C(sector)[T.Tech]           -0.8237      0.769     -1.071      0.284      -2.333       0.686
-twitter_log                 -0.0198      0.098     -0.202      0.840      -0.212       0.172
-instagram_log                0.0855      0.090      0.946      0.344      -0.092       0.263
-linkedin_log                 0.1689      0.149      1.130      0.259      -0.124       0.462
-ceo_connections_log         -0.2305      0.199     -1.156      0.248      -0.622       0.161
-ceo_connections_dummy        0.8258      0.896      0.921      0.357      -0.934       2.585
-articles_log                 1.2260      0.234      5.235      0.000       0.766       1.686
-overall_digital_presence     0.2460      0.052      4.751      0.000       0.144       0.348
-age_log                     -2.1321      0.695     -3.068      0.002      -3.496      -0.768
-startup_stage                3.2126      0.395      8.123      0.000       2.436       3.989
+Intercept                    6.8973      1.342      5.139      0.000       4.262       9.532
+C(region)[T.North]           0.2611      0.839      0.311      0.756      -1.385       1.907
+C(region)[T.Other]          -1.9722      1.000     -1.972      0.049      -3.935      -0.009
+C(region)[T.South]          -0.4765      0.529     -0.901      0.368      -1.514       0.561
+C(region)[T.West]           -1.0664      0.637     -1.675      0.094      -2.316       0.183
+C(sector)[T.Finance]        -0.7767      1.084     -0.717      0.474      -2.904       1.351
+C(sector)[T.Industrial]     -0.5123      0.968     -0.529      0.597      -2.412       1.387
+C(sector)[T.Other]           0.5798      1.074      0.540      0.590      -1.529       2.688
+C(sector)[T.Tech]           -0.7969      0.768     -1.038      0.300      -2.305       0.711
+twitter_log                  0.0342      0.099      0.346      0.729      -0.160       0.228
+instagram_log                0.1449      0.093      1.564      0.118      -0.037       0.327
+linkedin_log                 0.2998      0.156      1.923      0.055      -0.006       0.606
+ceo_connections_log         -0.2442      0.207     -1.179      0.239      -0.651       0.162
+ceo_connections_dummy        0.7832      0.895      0.875      0.382      -0.975       2.541
+articles_log                 1.2623      0.241      5.231      0.000       0.789       1.736
+overall_digital_presence -4.841e-05    2.8e-05     -1.730      0.084      -0.000    6.52e-06
+age_log                     -2.1479      0.694     -3.095      0.002      -3.510      -0.785
+startup_stage                3.1693      0.396      8.008      0.000       2.392       3.946
 ==============================================================================
-Omnibus:                      100.449   Durbin-Watson:                   1.850
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               90.714
-Skew:                          -0.768   Prob(JB):                     2.00e-20
-Kurtosis:                       2.292   Cond. No.                     6.42e+15
+Omnibus:                       97.332   Durbin-Watson:                   1.863
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               91.037
+Skew:                          -0.775   Prob(JB):                     1.70e-20
+Kurtosis:                       2.314   Cond. No.                     7.09e+04
 ==============================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 1.83e-27. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 7.09e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

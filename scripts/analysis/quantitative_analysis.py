@@ -21,18 +21,34 @@ os.makedirs('results/quantitative_analysis', exist_ok=True)
 df = pd.read_csv("data/processed/final_h1_data.csv")
 
 # Calculate overall digital presence composite score
-df['overall_digital_presence'] = df[[
+df['overall_digital_presence_log'] = df[[
     'twitter_log', 'instagram_log', 'linkedin_log',
     'ceo_connections_log', 'articles_log'
 ]].mean(axis=1)
 
-numeric_cols = [
+# Original version for Spearman 
+df['overall_digital_presence'] = df[[
+    'twitter', 'instagram', 'linkedin',
+    'ceo_connections', 'Number of Articles'
+]].mean(axis=1)
+
+# Create separate DataFrames for different methods
+pearson_cols = [
     'twitter_log', 'instagram_log', 'linkedin_log',
     'ceo_connections_log', 'ceo_connections_dummy',
     'total_funding_log', 'articles_log', 'age_log',
+    'overall_digital_presence_log'
+]
+
+spearman_cols = [
+    'twitter', 'instagram', 'linkedin',
+    'ceo_connections', 'ceo_connections_dummy',
+    'total_funding', 'Number of Articles', 'age',
     'overall_digital_presence'
 ]
-numeric_df = df[numeric_cols]
+
+pearson_df = df[pearson_cols]
+spearman_df = df[spearman_cols]
 
 def compute_correlations(df, method='pearson'):
     cols = df.columns
@@ -54,47 +70,45 @@ def compute_correlations(df, method='pearson'):
     return corr_matrix.astype(float), pval_matrix.astype(float)
 
 # Calculate correlations for different variable types
-pearson_corr_matrix, pearson_pval_matrix = compute_correlations(numeric_df, method='pearson')
-pointbiserial_corr_matrix, pointbiserial_pval_matrix = compute_correlations(
-    numeric_df[['ceo_connections_dummy', 'total_funding_log']], 
-    method='pointbiserial'
-)
+pearson_corr_matrix, pearson_pval_matrix = compute_correlations(pearson_df, method='pearson')
 
-# Calculate Spearman correlations
-spearman_corr_matrix = numeric_df.corr(method='spearman')
-spearman_pval_matrix = numeric_df.apply(lambda x: numeric_df.apply(
+# Calculate Spearman correlations with original data
+spearman_corr_matrix = spearman_df.corr(method='spearman')
+spearman_pval_matrix = spearman_df.apply(lambda x: spearman_df.apply(
     lambda y: spearmanr(x, y).pvalue))
 
-# Platform-specific analysis
+# Modified platform analysis
 platforms = {
-    'twitter_log': 'Twitter Followers',
-    'instagram_log': 'Instagram Followers', 
-    'linkedin_log': 'LinkedIn Followers',
-    'overall_digital_presence': 'Overall Digital Presence'
+    'twitter_log': ('Twitter Followers (log)', 'twitter'),
+    'instagram_log': ('Instagram Followers (log)', 'instagram'),
+    'linkedin_log': ('LinkedIn Followers (log)', 'linkedin'),
+    'overall_digital_presence_log': ('Digital Presence Composite (log)', 'overall_digital_presence')
 }
 
 platform_results = []
-for platform, label in platforms.items():
-    # Pearson for continuous variables
-    pearson_corr = pearson_corr_matrix.loc[platform, 'total_funding_log']
-    pearson_p = pearson_pval_matrix.loc[platform, 'total_funding_log']
+for log_col, (pearson_label, orig_col) in platforms.items():
+    # Pearson with log data
+    pearson_corr = pearson_corr_matrix.loc[log_col, 'total_funding_log']
+    pearson_p = pearson_pval_matrix.loc[log_col, 'total_funding_log']
     
-    # Spearman for non-linear relationships
-    spearman_corr, spearman_p = spearmanr(numeric_df[platform], numeric_df['total_funding_log'])
+    # Spearman with original data
+    spearman_corr = spearman_corr_matrix.loc[orig_col, 'total_funding']
+    spearman_p = spearman_pval_matrix.loc[orig_col, 'total_funding']
     
     platform_results.append({
-        'Platform': label,
+        'Platform': pearson_label,
         'Pearson r': f"{pearson_corr:.2f}",
         'Pearson p': f"{pearson_p:.3f}",
         'Spearman ρ': f"{spearman_corr:.2f}",
         'Spearman p': f"{spearman_p:.3f}"
     })
 
-# Add CEO connections dummy results
+# Add CEO connections dummy results (binary variable)
+pb_corr, pb_pval = pointbiserialr(df['ceo_connections_dummy'], df['total_funding_log'])
 platform_results.append({
     'Platform': 'CEO Connections (500+ dummy)',
-    'Pearson r': f"{pointbiserial_corr_matrix.loc['ceo_connections_dummy', 'total_funding_log']:.2f}",
-    'Pearson p': f"{pointbiserial_pval_matrix.loc['ceo_connections_dummy', 'total_funding_log']:.3f}",
+    'Pearson r': f"{pb_corr:.2f}",
+    'Pearson p': f"{pb_pval:.3f}",
     'Spearman ρ': '-',
     'Spearman p': '-'
 })
@@ -412,7 +426,7 @@ partial_corrs_full = {}
 partial_pvals_full = {}
 
 digital_metrics = [
-    'overall_digital_presence', 'twitter_log', 'instagram_log',
+    'overall_digital_presence_log', 'twitter_log', 'instagram_log',
     'linkedin_log', 'ceo_connections_log', 'ceo_connections_dummy',
     'articles_log'
 ]
@@ -439,11 +453,23 @@ for metric in digital_metrics:
     partial_corrs_full[metric] = corr_full
     partial_pvals_full[metric] = pval_full
 
-# Create enhanced results dataframe
+# Add metric mapping for Spearman correlations
+metric_mapping = {
+    'overall_digital_presence_log': 'overall_digital_presence',
+    'twitter_log': 'twitter',
+    'instagram_log': 'instagram',
+    'linkedin_log': 'linkedin',
+    'ceo_connections_log': 'ceo_connections',
+    'ceo_connections_dummy': 'ceo_connections_dummy',
+    'articles_log': 'Number of Articles'
+}
+
+# Create enhanced results dataframe WITH PROPER MAPPING
 results_df = pd.DataFrame({
     'metric': digital_metrics,
     'type': ['Composite'] + ['Social']*3 + ['Network']*2 + ['Media'],
-    'spearman_rho': [spearman_corr_matrix.loc[m, 'total_funding_log'] for m in digital_metrics],
+    'spearman_rho': [spearman_corr_matrix.loc[metric_mapping[m], 'total_funding'] 
+                     for m in digital_metrics],
     'partial_rho_age': [partial_corrs_age[m] for m in digital_metrics],
     'partial_rho_full_model': [partial_corrs_full[m] for m in digital_metrics],
     'p_value_full': [partial_pvals_full[m] for m in digital_metrics]
@@ -619,26 +645,26 @@ def bootstrap_spearman_ci(metric, n_iterations=1000):
     bootstrap_corrs = []
     for _ in range(n_iterations):
         sample = resample(df, replace=True)
-        corr = spearmanr(sample[metric], sample['total_funding_log']).correlation
+        corr = spearmanr(sample[metric], sample['total_funding']).correlation
         bootstrap_corrs.append(corr)
     return np.nanpercentile(bootstrap_corrs, [2.5, 97.5])
 
-# Metrics to analyze - matches your digital_metrics list
+# Metrics to analyze - USE ORIGINAL SCALE VARIABLES FOR SPEARMAN
 metrics_to_bootstrap = [
-    'overall_digital_presence',
-    'twitter_log',
-    'instagram_log',
-    'linkedin_log',
-    'ceo_connections_log',
-    'ceo_connections_dummy',
-    'articles_log'
+    'overall_digital_presence',  # Original composite score
+    'twitter',                   # Original followers
+    'instagram',                 # Original followers
+    'linkedin',                  # Original followers
+    'ceo_connections',           # Original connection count
+    'ceo_connections_dummy',     # Binary dummy (no transformation needed)
+    'Number of Articles'         # Original article count
 ]
 
 # Calculate bootstrap CIs for all metrics
 bootstrap_results = {}
 for metric in metrics_to_bootstrap:
     ci = bootstrap_spearman_ci(metric)
-    point_estimate = spearmanr(df[metric], df['total_funding_log']).correlation
+    point_estimate = spearmanr(df[metric], df['total_funding']).correlation  # Use original funding
     bootstrap_results[metric] = {
         'estimate': point_estimate,
         'ci_lower': ci[0],
@@ -653,12 +679,12 @@ bootstrap_df.to_csv('results/quantitative_analysis/bootstrap_confidence_interval
 plt.figure(figsize=(12, 8))
 metric_labels = {
     'overall_digital_presence': 'Overall Digital',
-    'twitter_log': 'Twitter',
-    'instagram_log': 'Instagram',
-    'linkedin_log': 'LinkedIn',
-    'ceo_connections_log': 'CEO Connections',
+    'twitter': 'Twitter',
+    'instagram': 'Instagram',
+    'linkedin': 'LinkedIn',
+    'ceo_connections': 'CEO Connections',
     'ceo_connections_dummy': 'CEO 500+ Dummy',
-    'articles_log': 'Media Articles'
+    'Number of Articles': 'Media Articles'
 }
 
 for i, metric in enumerate(metrics_to_bootstrap):

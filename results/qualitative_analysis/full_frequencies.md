@@ -58,6 +58,14 @@
 |                    4 |        38.89 |
 |                    5 |        33.33 |
 
+### Risk Perception
+|   Risk Perception |   proportion |
+|------------------:|-------------:|
+|                 1 |        38.89 |
+|                 2 |        50    |
+|                 3 |         5.56 |
+|                 5 |         5.56 |
+
 ### Verification Frequency
 |   Verification Frequency |   proportion |
 |-------------------------:|-------------:|

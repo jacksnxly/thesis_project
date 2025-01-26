@@ -1,4 +1,4 @@
-,twitter_log,instagram_log,linkedin_log,ceo_connections_log,ceo_connections_dummy,total_funding_log,articles_log,age_log,overall_digital_presence
+,twitter_log,instagram_log,linkedin_log,ceo_connections_log,ceo_connections_dummy,total_funding_log,articles_log,age_log,overall_digital_presence_log
 twitter_log,,,,,,,0.19258960844103068,,0.40482799978664497
 instagram_log,,,0.07988187118343074,,0.0935743859228855,,,,0.44856889823877333
 linkedin_log,,,,0.8355587610613086,0.7664643194458964,0.20366284224521458,0.22152052047616871,0.10706670758083559,0.8170222180959404
@@ -7,4 +7,4 @@ ceo_connections_dummy,,,,,,0.18011320779653628,0.19403192696635724,0.10537490790
 total_funding_log,,,,,,,0.3442521231097907,,0.2420456622588061
 articles_log,,,,,,,,0.1067432042193089,0.3915079816723167
 age_log,,,,,,,,,0.0967453777851761
-overall_digital_presence,,,,,,,,,
+overall_digital_presence_log,,,,,,,,,
