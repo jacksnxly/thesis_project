@@ -1,87 +1,238 @@
-# Qualitative Codebook: VC Questionnaire Analysis
+# Codebook: VC Survey on Entrepreneur Digital Presence
 
-_Digital Presence in the German Startup Ecosystem_
-
----
-
-## **1. Digital Infrastructure**
-
-**Definition**: Aspects related to the technical/strategic components of digital presence.
-
-| Code                | Description                                | Example Quote                                                                 |
-| ------------------- | ------------------------------------------ | ----------------------------------------------------------------------------- |
-| `DEFINITION`        | How respondents define "digital presence"  | _"Sum of all ways you appear online: website, social media, content sharing"_ |
-| `COMPONENTS`        | Key elements of effective digital presence | _"LinkedIn, Social Media, Podcasts, Blogs, News"_                             |
-| `PLATFORM_PRIORITY` | Valued platforms (LinkedIn > Instagram)    | _"A big LinkedIn network compensates; Instagram cannot"_                      |
+**Sample**: 18 VC professionals in Germany  
+**Purpose**: Document variables, definitions, and illustrative quotes from open-ended responses. Likert scales excluded per instructions.
 
 ---
 
-## **2. Cultural Nuances**
+## Variables & Definitions
 
-**Definition**: German-specific cultural factors influencing digital presence evaluation.
+### 1. **Years of Experience in VC or as an Investor**
 
-| Code               | Description                              | Example Quote                                             |
-| ------------------ | ---------------------------------------- | --------------------------------------------------------- |
-| `PROFESSIONALISM`  | Emphasis on polished, factual content    | _"Germans value error-free profiles and expertise"_       |
-| `MODESTY`          | Avoidance of self-promotion              | _"Overhyped claims are seen critically"_                  |
-| `RISK_AVERSION`    | Conservative approach to digital signals | _"We analyze extensively but still prefer track records"_ |
-| `INPERSON_NETWORK` | Preference for offline validation        | _"Final decisions always involve personal meetings"_      |
+_Categories_:
 
----
-
-## **3. Evaluation Criteria**
-
-**Definition**: How digital presence is assessed in funding decisions.
-
-| Code               | Description                          | Example Quote                                           |
-| ------------------ | ------------------------------------ | ------------------------------------------------------- |
-| `VERIFICATION`     | Methods to validate online claims    | _"We check LinkedIn, read articles, view social media"_ |
-| `RED_FLAGS`        | Negative digital presence indicators | _"Inconsistent info across platforms raises concerns"_  |
-| `POSITIVE_SIGNALS` | Factors that enhance credibility     | _"Thought leadership via blogs/podcasts adds value"_    |
+- Less than 1 year
+- 1–3 years
+- 3–5 years
+- More than 5 years
 
 ---
 
-## **4. Evolving Trends**
+### 2. **Role/Position**
 
-**Definition**: Perceptions of digital presence's changing role.
+_Common Roles_:
 
-| Code                  | Description                               | Example Quote                                       |
-| --------------------- | ----------------------------------------- | --------------------------------------------------- |
-| `CHANGING_IMPORTANCE` | Shifts in relevance over time             | _"Digital presence acts as an initial filter now"_  |
-| `FUTURE_PREDICTION`   | Expectations for 3-5 years                | _"Importance will increase slightly with AI tools"_ |
-| `DRIVERS_OF_CHANGE`   | Forces shaping digital presence evolution | _"Global competition and Gen Z expectations"_       |
-
----
-
-## **5. Sentiment Codes**
-
-**Definition**: Emotional valence toward digital presence.
-
-| Code       | Description                        | Example Quote                                           |
-| ---------- | ---------------------------------- | ------------------------------------------------------- |
-| `POSITIVE` | Clear endorsement of digital value | _"Digital identity is essential for long-term success"_ |
-| `NEUTRAL`  | Ambivalent or conditional support  | _"It matters, but depends on the industry"_             |
-| `NEGATIVE` | Skepticism about digital influence | _"Can’t compensate for weak unit economics"_            |
+- Senior Venture Manager
+- Director
+- Principal
+- Managing Director
+- Partner
+- Analyst
+- Senior Advisor
 
 ---
 
-## **6. Demographic & Contextual Codes**
+### 3. **Number of Investments Made in the Past 2 Years**
 
-**Definition**: Respondent characteristics shaping perspectives.
-
-| Code                  | Description                       | Example Entry                 |
-| --------------------- | --------------------------------- | ----------------------------- |
-| `ROLE`                | Position (Partner, Analyst, etc.) | _"Senior Investment Manager"_ |
-| `EXPERIENCE`          | Years in VC (1-3, 3-5, 5+)        | _"More than 5 years"_         |
-| `CULTURAL_BACKGROUND` | National/cultural identity        | _"German"_                    |
+_Range_: 2–30 investments.
 
 ---
 
-## **Code Application Guidelines**
+### 4. **Stages of Investment**
 
-1. **Ambiguous Responses**: Use `NEUTRAL` if sentiment is unclear.
-2. **Multiple Codes**: Assign all applicable codes (e.g., a quote about _"LinkedIn professionalism in Germany"_ gets `PROFESSIONALISM` + `PLATFORM_PRIORITY`).
-3. **Negative Cases**: Note when respondents explicitly reject a theme (e.g., _"We don’t care about Instagram"_ → `PLATFORM_PRIORITY` with negative sentiment).
-4. **Cross-Code Analysis**: Compare `CULTURAL_BACKGROUND` with `PLATFORM_PRIORITY` to identify German vs. non-German patterns.
+_Stages Mentioned_:
+
+- Pre-seed
+- Seed
+- Series A
+- Series B+
+- Series C
 
 ---
+
+### 5. **Sector Focus**
+
+_Key Sectors_:
+
+- B2B Tech
+- SaaS
+- FinTech
+- HealthTech
+- ClimateTech
+- Industrial/Deep Tech
+- Web3
+
+---
+
+### 6. **National/Cultural Background**
+
+_Categories_:
+
+- German
+- Non-German
+- Mixed
+
+---
+
+### 7. **Definition of “Digital Presence”**
+
+_Themes_:
+
+1. **Comprehensive Online Footprint**:
+
+   > “The collective representation of their identity, brand, and activities online [...] including websites, social media, content, and interactions.”  
+   > “If you Google a person, what pops up. From there, navigate to their socials.”
+
+2. **Professional Visibility**:
+
+   > “LinkedIn, Social Media, Podcasts, Blogs, News.”  
+   > “Being digital[ly] reachable on platforms like LinkedIn, publishing insights.”
+
+3. **Credibility & Consistency**:
+   > “Credible, online available information relevant to expertise and track record.”
+
+---
+
+### 8. **Reasons for Change in Importance of Digital Presence**
+
+_Key Drivers_:
+
+1. **Industry Dynamics**:
+
+   > “In fast-moving industries like Web3, digital identities are essential for trust.”
+
+2. **Investor Research Habits**:
+
+   > “Investors do more extensive online research before meetings; digital footprint acts as an initial filter.”
+
+3. **Market Saturation**:
+   > “The more crowded the digital space becomes, the harder entrepreneurs must work to earn attention.”
+
+---
+
+### 9. **Components of Digital Presence**
+
+_Components Evaluated_:
+
+- Professional Networks (LinkedIn)
+- Online Reputation (press coverage, testimonials)
+- Social Media Engagement
+- Digital Thought Leadership (blogs, podcasts)
+
+---
+
+### 10. **Most Critical Component for Funding in Germany**
+
+_Common Answers_:
+
+1. **LinkedIn Presence**:
+
+   > “LinkedIn presence [...] helps generate B2B leads.”
+
+2. **Track Record**:
+
+   > “Track record of successful past entrepreneurial activity.”
+
+3. **Thought Leadership**:
+   > “Content showcasing in-depth knowledge resonates more than flashy marketing.”
+
+---
+
+### 11. **Examples of Digital Presence Influencing Decisions**
+
+_Positive_:
+
+> “Founder mentioned positively in Gründerszene articles as a ‘VIP Founder’ due to prior success.”  
+> “In-depth blog article about an element of company building.”
+
+_Negative_:
+
+> “Negative press about a co-founder [required clarification].”
+
+---
+
+### 12. **Critical Cultural Factors in Germany**
+
+_Themes_:
+
+1. **Modesty & Substance**:
+
+   > “Avoiding overhyped claims; focusing on substance and proven results.”
+
+2. **Professionalism**:
+
+   > “Polished, well-structured online presence reflecting expertise.”
+
+3. **Transparency**:
+   > “Clear, honest communication about qualifications and goals.”
+
+---
+
+### 13. **Perception of German Risk Approach**
+
+_Sentiments_:
+
+- **Risk-Averse**:
+  > “Germans are too slow. Speed is the main difference.”  
+  > “Slightly less risk-taking compared to other markets.”
+
+---
+
+### 14. **In-Person vs. Digital Evaluation**
+
+_Preferences_:
+
+- **In-Person Dominance**:
+
+  > “In-person/network-based references are far more important.”  
+  > “Personal impressions are just way more important.”
+
+- **Equal Importance**:
+  > “Both are equally important.”
+
+---
+
+### 15. **German vs. International VC Differences**
+
+_Observations_:
+
+- **German Caution**:
+
+  > “German VCs place LESS importance on digital presence [...] due to board-driven decision-making.”  
+  > “Germans have a multifaceted catalogue of criteria that each deal must meet.”
+
+- **Speed & Flexibility**:
+  > “International VCs (e.g., a16z, YC) prioritize speed; Germans ‘can’t keep up.’”
+
+---
+
+### 16. **Future Importance of Digital Presence**
+
+_Predictions_:
+
+1. **Increase**:
+
+   > “Digitalization and AI will drive change.”
+
+2. **Stagnation**:
+
+   > “It will stay about the same [...] the website can be done after investment.”
+
+3. **Decrease**:
+   > “At Series A, revenues dominate [...] digital identity becomes less critical.”
+
+---
+
+### 17. **Additional Insights**
+
+- **AI’s Role**:
+  > “Cutting edge in VC comes from data crawling [...] startups need digital visibility to attract.”
+- **Cultural Nuances**:
+  > “Germans battletest founders more [...] I want aggressive, daring founders who went through hardship.”
+
+---
+
+**Data Processing Notes**:
+
+- Ambiguous responses (e.g., “N/A,” “Can’t tell”) were categorized as “Unclear/Non-response.”
+- Quotes were lightly edited for clarity (typos corrected, spacing standardized).
