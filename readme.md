@@ -26,7 +26,7 @@ In today's digital age, an entrepreneur's online presence can significantly impa
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/jacksonly/thesis_project.git
+   git clone https://github.com/jacksnxly/thesis_project.git
    cd thesis_project
    ```
 
