@@ -9,7 +9,7 @@
 - [Data Collection](#data-collection)
 - [Data Cleaning](#data-cleaning)
 - [Data Analysis](#data-analysis)
-- [Data Preprocessing Summary](#data-summary)
+- [Data Preprocessing Summary](#data-preprocessing-summary)
 - [Results](#results)
 - [Additional Notes](#additional-notes)
 
