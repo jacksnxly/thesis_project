@@ -1,0 +1,27 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:      total_funding_log   R-squared:                       0.095
+Model:                            OLS   Adj. R-squared:                  0.092
+Method:                 Least Squares   F-statistic:                     26.62
+Date:                Tue, 28 Jan 2025   Prob (F-statistic):           2.26e-16
+Time:                        14:12:23   Log-Likelihood:                -2472.1
+No. Observations:                 761   AIC:                             4952.
+Df Residuals:                     757   BIC:                             4971.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================================
+                                           coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------
+Intercept                                6.5394      0.592     11.049      0.000       5.378       7.701
+overall_digital_presence                 1.1429      0.191      5.991      0.000       0.768       1.517
+stage_dummy                              7.7816      2.602      2.991      0.003       2.675      12.889
+overall_digital_presence:stage_dummy    -0.8201      0.668     -1.227      0.220      -2.132       0.492
+==============================================================================
+Omnibus:                      195.422   Durbin-Watson:                   1.845
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              113.544
+Skew:                          -0.816   Prob(JB):                     2.21e-25
+Kurtosis:                       2.043   Cond. No.                         39.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

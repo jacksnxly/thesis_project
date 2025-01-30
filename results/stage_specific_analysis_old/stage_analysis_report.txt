@@ -1,0 +1,71 @@
+======= H7a Regression (Digital Presence x Stage) =======
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:      total_funding_log   R-squared:                       0.095
+Model:                            OLS   Adj. R-squared:                  0.092
+Method:                 Least Squares   F-statistic:                     26.62
+Date:                Tue, 28 Jan 2025   Prob (F-statistic):           2.26e-16
+Time:                        14:12:34   Log-Likelihood:                -2472.1
+No. Observations:                 761   AIC:                             4952.
+Df Residuals:                     757   BIC:                             4971.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================================
+                                           coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------
+Intercept                                6.5394      0.592     11.049      0.000       5.378       7.701
+overall_digital_presence                 1.1429      0.191      5.991      0.000       0.768       1.517
+stage_dummy                              7.7816      2.602      2.991      0.003       2.675      12.889
+overall_digital_presence:stage_dummy    -0.8201      0.668     -1.227      0.220      -2.132       0.492
+==============================================================================
+Omnibus:                      195.422   Durbin-Watson:                   1.845
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              113.544
+Skew:                          -0.816   Prob(JB):                     2.21e-25
+Kurtosis:                       2.043   Cond. No.                         39.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+======= H7b Regression (Biz Metrics vs Digital Presence x Stage) =======
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:      total_funding_log   R-squared:                       0.157
+Model:                            OLS   Adj. R-squared:                  0.144
+Method:                 Least Squares   F-statistic:                     12.66
+Date:                Tue, 28 Jan 2025   Prob (F-statistic):           3.56e-22
+Time:                        14:12:34   Log-Likelihood:                -2445.4
+No. Observations:                 761   AIC:                             4915.
+Df Residuals:                     749   BIC:                             4970.
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+========================================================================================================
+                                           coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------
+Intercept                                8.4332      1.141      7.394      0.000       6.194      10.672
+overall_digital_presence                 0.4954      0.328      1.511      0.131      -0.148       1.139
+stage_dummy                              0.2416      8.734      0.028      0.978     -16.905      17.388
+overall_digital_presence:stage_dummy    -0.1991      0.958     -0.208      0.835      -2.079       1.681
+age_log                                 -1.1666      0.701     -1.663      0.097      -2.544       0.210
+age_log:stage_dummy                      5.0303      4.921      1.022      0.307      -4.630      14.691
+articles_log                             1.8346      0.275      6.679      0.000       1.295       2.374
+articles_log:stage_dummy                -1.2443      0.846     -1.471      0.142      -2.905       0.417
+ceo_connections_log                     -0.1332      0.205     -0.650      0.516      -0.535       0.269
+ceo_connections_log:stage_dummy         -0.4245      1.208     -0.352      0.725      -2.795       1.946
+ceo_connections_dummy                    1.4641      0.917      1.597      0.111      -0.336       3.264
+ceo_connections_dummy:stage_dummy        0.3026      5.924      0.051      0.959     -11.327      11.932
+==============================================================================
+Omnibus:                      135.464   Durbin-Watson:                   1.807
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               98.110
+Skew:                          -0.772   Prob(JB):                     4.96e-22
+Kurtosis:                       2.158   Cond. No.                         305.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Key Interaction Interpretations:
+ - For H7a: The interaction term 'overall_digital_presence:stage_dummy' indicates if digital presence
+   is significantly different in Series A relative to Pre-Seed.
+ - For H7b: Each metric's interaction with 'stage_dummy' (e.g., 'age_log:stage_dummy') indicates
+   whether that metric's relationship with funding is stronger/weaker for Series A.

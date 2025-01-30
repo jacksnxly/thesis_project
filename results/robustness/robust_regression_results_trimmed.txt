@@ -1,0 +1,43 @@
+                                OLS Regression Results                               
+=====================================================================================
+Dep. Variable:     total_funding_trimmed_log   R-squared:                       0.181
+Model:                                   OLS   Adj. R-squared:                  0.162
+Method:                        Least Squares   F-statistic:                     9.735
+Date:                       Wed, 29 Jan 2025   Prob (F-statistic):           2.79e-22
+Time:                               00:30:12   Log-Likelihood:                -2306.8
+No. Observations:                        722   AIC:                             4648.
+Df Residuals:                            705   BIC:                             4726.
+Df Model:                                 16                                         
+Covariance Type:                   nonrobust                                         
+================================================================================================
+                                   coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------
+Intercept                        6.8686      1.413      4.861      0.000       4.094       9.643
+C(region)[T.North]               0.4538      0.895      0.507      0.612      -1.303       2.211
+C(region)[T.Other]              -1.9005      1.029     -1.848      0.065      -3.920       0.119
+C(region)[T.South]              -0.4297      0.556     -0.773      0.440      -1.522       0.662
+C(region)[T.West]               -1.0236      0.659     -1.553      0.121      -2.317       0.270
+C(sector)[T.Finance]            -0.6225      1.168     -0.533      0.594      -2.916       1.671
+C(sector)[T.Industrial]         -0.3846      1.012     -0.380      0.704      -2.372       1.603
+C(sector)[T.Other]               0.6073      1.132      0.537      0.592      -1.615       2.830
+C(sector)[T.Tech]               -0.7671      0.816     -0.940      0.348      -2.369       0.835
+twitter_log                     -0.0355      0.105     -0.338      0.736      -0.242       0.171
+instagram_log                    0.1019      0.097      1.055      0.292      -0.088       0.292
+linkedin_log                     0.1460      0.159      0.917      0.360      -0.167       0.459
+ceo_connections_log             -0.1943      0.209     -0.930      0.353      -0.605       0.216
+ceo_connections_dummy            0.8220      0.921      0.892      0.373      -0.986       2.630
+articles_log                     1.2461      0.255      4.889      0.000       0.746       1.747
+overall_digital_presence_log     0.2528      0.055      4.587      0.000       0.145       0.361
+age_log                         -2.1691      0.721     -3.008      0.003      -3.585      -0.753
+startup_stage                    3.1425      0.436      7.200      0.000       2.286       3.999
+==============================================================================
+Omnibus:                      120.302   Durbin-Watson:                   1.828
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               86.136
+Skew:                          -0.737   Prob(JB):                     1.98e-19
+Kurtosis:                       2.170   Cond. No.                     1.56e+16
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.86e-28. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

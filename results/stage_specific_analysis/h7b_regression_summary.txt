@@ -1,44 +1,10 @@
-======= MULTI-STAGE ANALYSIS REPORT =======
-
-[H7a-Style Model: Digital Presence x Stage (3 levels)]
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:      total_funding_log   R-squared:                       0.177
-Model:                            OLS   Adj. R-squared:                  0.171
-Method:                 Least Squares   F-statistic:                     32.43
-Date:                Tue, 28 Jan 2025   Prob (F-statistic):           5.33e-30
-Time:                        14:22:47   Log-Likelihood:                -2436.2
-No. Observations:                 761   AIC:                             4884.
-Df Residuals:                     755   BIC:                             4912.
-Df Model:                           5                                         
-Covariance Type:            nonrobust                                         
-==================================================================================================================
-                                                     coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------------------------------------------
-Intercept                                          6.2136      0.706      8.803      0.000       4.828       7.599
-C(startup_stage)[T.2]                              1.7954      1.183      1.517      0.130      -0.528       4.118
-C(startup_stage)[T.3]                              8.1074      2.521      3.216      0.001       3.159      13.056
-overall_digital_presence                           0.5928      0.239      2.476      0.014       0.123       1.063
-overall_digital_presence:C(startup_stage)[T.2]     0.7093      0.377      1.882      0.060      -0.031       1.449
-overall_digital_presence:C(startup_stage)[T.3]    -0.2699      0.657     -0.411      0.681      -1.559       1.020
-==============================================================================
-Omnibus:                      112.754   Durbin-Watson:                   1.865
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              100.709
-Skew:                          -0.810   Prob(JB):                     1.35e-22
-Kurtosis:                       2.259   Cond. No.                         45.2
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
-[H7b-Style Model: Business Metrics & Digital Presence x Stage (3 levels)]
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:      total_funding_log   R-squared:                       0.226
 Model:                            OLS   Adj. R-squared:                  0.208
 Method:                 Least Squares   F-statistic:                     12.77
 Date:                Tue, 28 Jan 2025   Prob (F-statistic):           9.65e-32
-Time:                        14:22:47   Log-Likelihood:                -2412.7
+Time:                        14:22:43   Log-Likelihood:                -2412.7
 No. Observations:                 761   AIC:                             4861.
 Df Residuals:                     743   BIC:                             4945.
 Df Model:                          17                                         
@@ -73,13 +39,3 @@ Kurtosis:                       2.372   Cond. No.                         346.
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
-Interpretation Tips:
-1) For H7a: Look at 'overall_digital_presence:C(startup_stage)[T.x]'.
-   - If those interaction coefficients are +/- and significant, it indicates
-     how digital presence differs in effect from the baseline stage.
-
-2) For H7b: Look at each 'metric:C(startup_stage)[T.x]' term.
-   - Positive (and significant) => that metric's slope is stronger in stage x
-     than in the baseline stage (usually Pre-Seed).
-   - Negative => weaker slope than the baseline.

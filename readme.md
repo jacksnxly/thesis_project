@@ -1,4 +1,87 @@
-# Introduction
+# Thesis Project: Analyzing the Impact of Digital Presence on Venture Capital Funding Success in Germany
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Motivation](#motivation)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Data Collection](#data-collection)
+- [Data Cleaning](#data-cleaning)
+- [Data Analysis](#data-analysis)
+- [Data Preprocessing Summary](#data-summary)
+- [Results](#results)
+- [Additional Notes](#additional-notes)
+
+## Project Overview
+
+This project investigates how an entrepreneur's digital presence influences their success in securing venture capital (VC) funding in Germany. By analyzing data from 761 German startups and conducting interviews with 18 German VCs, the study explores various aspects of digital identity, including professional networks, online reputation, and social media engagement, to understand their correlation with funding outcomes.
+
+## Motivation
+
+In today's digital age, an entrepreneur's online presence can significantly impact their ability to attract investment. This study aims to quantify and qualify the relationship between digital identity metrics and VC funding success, providing insights into the preferences and evaluation criteria of German venture capitalists.
+
+## Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/jacksonly/thesis_project.git
+   cd thesis_project
+   ```
+
+2. **Set Up a Virtual Environment**
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure Environment Variables**  
+   Create a `.env` file in the root directory:
+   ```ini
+   CRUNCHBASE_API_KEY=your_crunchbase_api_key
+   SOCIAL_MEDIA_API_KEY=your_social_media_api_key
+   ```
+
+## Usage
+
+### Data Collection
+
+```bash
+# Crunchbase Scraper
+python scraper/crunchbase_scraper.py
+
+# FX Scraper
+python scraper/fx_scraper.py
+
+# Social Media Scraper
+python scraper/social_scraper.py
+```
+
+### Data Cleaning
+
+```bash
+python scripts/apply_log_transform.py
+python scripts/categorize_industries.py
+```
+
+### Data Analysis
+
+```bash
+python scripts/analysis/quantitative_analysis.py
+python scripts/analysis/qualitative_analysis.py
+python scripts/analysis/questionnaire_quantitative_analysis.py
+python scripts/analysis/stage_specific_quant_analysis.py
+python scripts/analysis/robustness.py
+python scripts/analysis/robustness_0_values_trimmed.py
+```
 
 ## Data Preprocessing Summary
 
@@ -39,3 +122,27 @@
 20. Filled 0 for all empty entries (assuming startups with no funding are out of business)
 
 This preprocessing pipeline ensures a clean, structured dataset ready for analysis, with appropriate handling of missing values, categorical variables, and skewed distributions.
+
+## Results
+
+### Hypothesis Testing
+
+See Thesis
+
+### Descriptive Findings
+
+- **Survey Responses:**
+  - Professional networks rated high (M=3.89)
+  - Social media engagement rated lower (M=2.61)
+
+### Robustness Checks
+
+1. Trimming Top 5% Funding Outliers
+2. Excluding Zero-Funding Observations
+
+## Additional Notes
+
+- Use `.gitignore` for sensitive files
+- Maintain documentation in code comments
+- Regular dependency updates via `requirements.txt`
+- Comply with data protection regulations (GDPR)

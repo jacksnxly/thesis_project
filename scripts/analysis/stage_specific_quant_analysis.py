@@ -1,180 +1,213 @@
-import pandas as pd
-import numpy as np  # Added numpy import
-from scipy.stats import spearmanr
-from sklearn.utils import resample
-import matplotlib.pyplot as plt
-import seaborn as sns
 import os
 
-# Create directory for results
+import pandas as pd
+import numpy as np
+import statsmodels.formula.api as smf
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# -----------------------------------------------------------------------------
+# 1. CREATE DIRECTORY FOR RESULTS
+# -----------------------------------------------------------------------------
 os.makedirs('results/stage_specific_analysis', exist_ok=True)
 
-# Load data
+# -----------------------------------------------------------------------------
+# 2. LOAD DATA
+# -----------------------------------------------------------------------------
 df = pd.read_csv("data/processed/final_h1_data.csv")
 
-# Create digital presence composite
+# -----------------------------------------------------------------------------
+# 3. DATA PREPARATION
+# -----------------------------------------------------------------------------
+# 3A. CREATE DIGITAL PRESENCE COMPOSITE
 df['overall_digital_presence'] = df[[
-    'twitter_log', 'instagram_log', 'linkedin_log',
-    'ceo_connections_log', 'articles_log'
+    'twitter_log', 
+    'instagram_log', 
+    'linkedin_log',
+    'ceo_connections_log', 
+    'articles_log'
 ]].mean(axis=1)
 
-# Define stages (1=Pre-Seed, 3=Series A)
-stages = {
+# 3B. CHECK STARTUP STAGE VALUES
+#    We expect: 1=Pre-Seed, 2=Seed, 3=Series A
+#    If you have different codes, adjust accordingly.
+print("Unique stages in the data:", df['startup_stage'].unique())
+
+# 3C. (OPTIONAL) DROP ROWS WITH MISSING DATA IN KEY COLUMNS
+#    Adjust this as needed if you prefer imputation or partial usage.
+key_cols = [
+    'total_funding_log',
+    'overall_digital_presence',
+    'startup_stage',
+    'age_log',
+    'articles_log',
+    'ceo_connections_log',
+    'ceo_connections_dummy'
+]
+df = df.dropna(subset=key_cols).copy()
+
+# 3D. MAKE SURE startup_stage IS IN {1, 2, 3}
+df = df[df['startup_stage'].isin([1, 2, 3])].copy()
+df['startup_stage'] = df['startup_stage'].astype(int)
+
+# -----------------------------------------------------------------------------
+# 4. DEFINE MODELS
+# -----------------------------------------------------------------------------
+
+# --- 4A. H7A-STYLE MODEL ---
+# Hypothesis: "The influence of digital presence on funding differs by stage."
+#
+# We treat 'startup_stage' as a 3-level categorical variable via C(startup_stage).
+# The model includes:
+#   total_funding_log ~ overall_digital_presence
+#                     + C(startup_stage)
+#                     + interaction: overall_digital_presence * C(startup_stage)
+
+formula_h7a = """
+    total_funding_log 
+    ~ overall_digital_presence
+    + C(startup_stage)
+    + overall_digital_presence:C(startup_stage)
+"""
+
+model_h7a = smf.ols(formula=formula_h7a, data=df).fit()
+print("=== H7a Model Summary ===")
+print(model_h7a.summary())
+
+# Save summary
+with open('results/stage_specific_analysis/h7a_regression_summary.txt', 'w') as f:
+    f.write(model_h7a.summary().as_text())
+
+# --- 4B. H7B-STYLE MODEL ---
+# Hypothesis: "The importance of verifiable business metrics relative to digital presence 
+#              changes (increases) from Pre-Seed to Seed to Series A."
+#
+# We include your known business metrics: age_log, articles_log, ceo_connections_log, ceo_connections_dummy.
+# We fully interact them (plus digital presence) with startup_stage to see if their 
+# effects differ by stage.
+
+business_metrics = ["age_log", "articles_log", "ceo_connections_log", "ceo_connections_dummy"]
+
+# Build up the formula string for interactions. For example:
+# total_funding_log ~ overall_digital_presence + C(startup_stage) 
+#                   + overall_digital_presence:C(startup_stage)
+#                   + age_log + age_log:C(startup_stage)
+#                   + articles_log + articles_log:C(startup_stage)
+#                   + ceo_connections_log + ceo_connections_log:C(startup_stage)
+#                   + ceo_connections_dummy + ceo_connections_dummy:C(startup_stage)
+
+interaction_parts = []
+for bm in business_metrics:
+    interaction_parts.append(bm)
+    interaction_parts.append(f"{bm}:C(startup_stage)")
+
+# Join them with "+"
+business_formula_part = " + ".join(interaction_parts)
+
+formula_h7b = f"""
+    total_funding_log
+    ~ overall_digital_presence
+    + C(startup_stage)
+    + overall_digital_presence:C(startup_stage)
+    + {business_formula_part}
+"""
+
+model_h7b = smf.ols(formula=formula_h7b, data=df).fit()
+print("\n=== H7b Model Summary ===")
+print(model_h7b.summary())
+
+# Save summary
+with open('results/stage_specific_analysis/h7b_regression_summary.txt', 'w') as f:
+    f.write(model_h7b.summary().as_text())
+
+# -----------------------------------------------------------------------------
+# 5. EXTRACT COEFFICIENTS & CONFIDENCE INTERVALS FOR EASY REVIEW
+# -----------------------------------------------------------------------------
+h7b_params = model_h7b.params
+h7b_conf = model_h7b.conf_int()
+h7b_results = pd.DataFrame({
+    'variable': h7b_params.index,
+    'coef': h7b_params.values,
+    'ci_lower': h7b_conf[0].values,
+    'ci_upper': h7b_conf[1].values
+})
+h7b_results.to_csv('results/stage_specific_analysis/h7b_regression_coeffs.csv', index=False)
+
+# -----------------------------------------------------------------------------
+# 6. OPTIONAL: PLOTTING PREDICTED FUNDING BY DIGITAL PRESENCE FOR EACH STAGE
+# -----------------------------------------------------------------------------
+# This helps visualize if digital presence slopes differ for Pre-Seed, Seed, Series A.
+
+# Create a grid of digital_presence values
+dp_grid = np.linspace(df['overall_digital_presence'].min(), 
+                      df['overall_digital_presence'].max(), 50)
+
+# For each stage in [1=Pre-Seed, 2=Seed, 3=SeriesA], create a data subset 
+# with median values for business metrics (if you want to hold them constant)
+pred_dfs = []
+for stage_val in [1, 2, 3]:
+    tmp = pd.DataFrame({
+        'overall_digital_presence': dp_grid,
+        'startup_stage': stage_val,
+        # Provide median (or mean) values for each business metric included in H7b
+        'age_log': df['age_log'].median() if 'age_log' in df else 0,
+        'articles_log': df['articles_log'].median() if 'articles_log' in df else 0,
+        'ceo_connections_log': df['ceo_connections_log'].median() if 'ceo_connections_log' in df else 0,
+        'ceo_connections_dummy': df['ceo_connections_dummy'].median() if 'ceo_connections_dummy' in df else 0
+    })
+    pred_dfs.append(tmp)
+
+pred_data = pd.concat(pred_dfs, ignore_index=True)
+
+# Add predicted log-funding and predicted funding
+pred_data['predicted_funding_log'] = model_h7b.predict(pred_data)
+pred_data['predicted_funding'] = np.exp(pred_data['predicted_funding_log'])
+
+# Map numeric stage to labels
+stage_label_map = {
     1: 'Pre-Seed',
+    2: 'Seed',
     3: 'Series A'
 }
+pred_data['stage_label'] = pred_data['startup_stage'].map(stage_label_map)
 
-# Define metrics
-digital_metrics = ['overall_digital_presence']
-business_metrics = ['age_log', 'articles_log', 'ceo_connections_log', 'ceo_connections_dummy']
+# Plot
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=pred_data,
+             x='overall_digital_presence',
+             y='predicted_funding',
+             hue='stage_label',
+             palette=['#4B8BBE', '#FFD43B', '#FF7A59'])  # example palette
 
-def bootstrap_correlation(data, metric, target='total_funding_log', n_boot=1000):
-    """Calculate bootstrapped correlation with CI"""
-    correlations = []
-    for _ in range(n_boot):
-        sample = resample(data, replace=True)
-        corr = spearmanr(sample[metric], sample[target]).correlation
-        if not np.isnan(corr):
-            correlations.append(corr)
-    return np.mean(correlations), np.percentile(correlations, [2.5, 97.5])
+plt.title("Predicted Funding vs Digital Presence, by Stage")
+plt.xlabel("Overall Digital Presence")
+plt.ylabel("Predicted Funding (exp of log)")
+plt.legend(title="Stage")
+plt.tight_layout()
+plt.savefig("results/stage_specific_analysis/h7b_predicted_plot.png", dpi=300)
+plt.show()
 
-def bootstrap_correlation_difference(data1, data2, metric):
-    """Bootstrap difference in correlations between two groups"""
-    diffs = []
-    for _ in range(1000):
-        sample1 = resample(data1, replace=True)
-        sample2 = resample(data2, replace=True)
-        corr1 = spearmanr(sample1[metric], sample1['total_funding_log']).correlation
-        corr2 = spearmanr(sample2[metric], sample2['total_funding_log']).correlation
-        diffs.append(corr1 - corr2)
-    return np.mean(diffs), np.percentile(diffs, [2.5, 97.5])
-
-def plot_stage_comparisons(results, metric_name):
-    """Visualize stage-specific correlations with CIs"""
-    plt.figure(figsize=(10, 6))
-    
-    # Prepare data for plotting
-    stage_labels = list(results.keys())
-    x_pos = np.arange(len(stage_labels))
-    means = np.array([results[stage]['mean'] for stage in stage_labels])
-    lowers = np.array([results[stage]['ci'][0] for stage in stage_labels])
-    uppers = np.array([results[stage]['ci'][1] for stage in stage_labels])
-    
-    # Create error bars
-    plt.errorbar(x=x_pos, y=means, 
-                 yerr=[means - lowers, uppers - means],
-                 fmt='o', markersize=8, capsize=5,
-                 color='#2E86C1')
-    
-    # Format plot
-    plt.xticks(ticks=x_pos, 
-               labels=[f"{stage}\n(n={results[stage]['n']})" for stage in stage_labels])
-    plt.axhline(0, color='gray', linestyle='--')
-    plt.ylabel('Spearman Correlation (ρ)')
-    plt.title(f'Stage-Specific Correlations: {metric_name} vs Funding')
-    plt.tight_layout()
-    plt.savefig(f'results/stage_specific_analysis/{metric_name}_stage_comparison.png', dpi=300)
-    plt.close()
-
-# Analyze H7a: Digital presence strength by stage
-h7a_results = {}
-for stage_num, stage_name in stages.items():
-    stage_data = df[df['startup_stage'] == stage_num]
-    if len(stage_data) < 20:
-        print(f"Warning: Insufficient data for {stage_name} (n={len(stage_data)})")
-        continue
-    
-    corr_mean, corr_ci = bootstrap_correlation(stage_data, 'overall_digital_presence')
-    h7a_results[stage_name] = {
-        'mean': corr_mean,
-        'ci': corr_ci,
-        'n': len(stage_data)
-    }
-
-# Save H7a results
-h7a_df = pd.DataFrame(h7a_results).T
-h7a_df.to_csv('results/stage_specific_analysis/h7a_digital_presence_comparison.csv')
-
-# Plot H7a results
-if h7a_results:
-    plot_stage_comparisons(h7a_results, 'Digital_Presence')
-
-# Analyze H7b: Business vs digital metrics across stages
-h7b_results = []
-
-for stage_num, stage_name in stages.items():
-    stage_data = df[df['startup_stage'] == stage_num]
-    if len(stage_data) < 20:
-        continue
-    
-    for business_metric in business_metrics:
-        b_mean, b_ci = bootstrap_correlation(stage_data, business_metric)
-        d_mean, d_ci = bootstrap_correlation(stage_data, 'overall_digital_presence')
-        
-        h7b_results.append({
-            'stage': stage_name,
-            'metric': business_metric,
-            'business_corr': b_mean,
-            'business_ci': b_ci,
-            'digital_corr': d_mean,
-            'digital_ci': d_ci,
-            'n': len(stage_data)
-        })
-
-# Convert to DataFrame and calculate differences
-if h7b_results:
-    h7b_df = pd.DataFrame(h7b_results)
-    h7b_df['difference'] = h7b_df['business_corr'] - h7b_df['digital_corr']
-    
-    # Calculate significance using array operations
-    business_ci_lower = np.array([ci[0] for ci in h7b_df['business_ci']])
-    digital_ci_upper = np.array([ci[1] for ci in h7b_df['digital_ci']])
-    h7b_df['sig_better'] = (business_ci_lower > digital_ci_upper)
-    
-    h7b_df.to_csv('results/stage_specific_analysis/h7b_business_vs_digital.csv', index=False)
-
-    # Plot H7b results
-    plt.figure(figsize=(12, 8))
-    sns.barplot(x='metric', y='difference', hue='stage', data=h7b_df,
-                palette={'Pre-Seed': '#4B8BBE', 'Series A': '#FF7A59'})
-    plt.axhline(0, color='gray', linestyle='--')
-    plt.ylabel('Business Metric Advantage\n(Business ρ - Digital ρ)')
-    plt.xlabel('Business Metric')
-    plt.title('Relative Importance: Business Metrics vs Digital Presence')
-    plt.legend(title='Funding Stage')
-    plt.tight_layout()
-    plt.savefig('results/stage_specific_analysis/h7b_metric_comparison.png', dpi=300)
-    plt.close()
-
-# Calculate statistical significance of differences
-print("\nH7a: Digital Presence Correlation Differences:")
-if 1 in df['startup_stage'].values and 3 in df['startup_stage'].values:
-    pre_seed_data = df[df['startup_stage'] == 1]
-    series_a_data = df[df['startup_stage'] == 3]
-    
-    diff_mean, diff_ci = bootstrap_correlation_difference(
-        pre_seed_data, series_a_data, 'overall_digital_presence'
-    )
-    print(f"Pre-Seed vs Series A difference: {diff_mean:.2f} (95% CI: {diff_ci})")
-
-print("\nH7b: Significant Business Metric Advantages:")
-if 'h7b_df' in locals():
-    print(h7b_df[['stage', 'metric', 'difference', 'sig_better']].to_markdown(index=False))
-
-# Generate detailed report
+# -----------------------------------------------------------------------------
+# 7. CREATE A TEXT REPORT
+# -----------------------------------------------------------------------------
 with open('results/stage_specific_analysis/stage_analysis_report.txt', 'w') as f:
-    f.write("Hypothesis H7a Results:\n")
-    f.write("Digital Presence vs Funding Correlation by Stage:\n")
-    f.write(h7a_df.to_string() + "\n\n")
+    f.write("======= MULTI-STAGE ANALYSIS REPORT =======\n\n")
+    f.write("[H7a-Style Model: Digital Presence x Stage (3 levels)]\n")
+    f.write(model_h7a.summary().as_text())
+    f.write("\n\n")
+
+    f.write("[H7b-Style Model: Business Metrics & Digital Presence x Stage (3 levels)]\n")
+    f.write(model_h7b.summary().as_text())
+    f.write("\n\n")
     
-    if 'h7b_df' in locals():
-        f.write("Hypothesis H7b Results:\n")
-        f.write("Business Metrics vs Digital Presence Comparison:\n")
-        f.write(h7b_df.to_string() + "\n\n")
-    
-    if 'diff_mean' in locals():
-        f.write(f"H7a Difference Test: {diff_mean:.2f} (95% CI: {diff_ci})\n")
-    
-    if 'h7b_df' in locals():
-        f.write("H7b Significant Advantages (business > digital):\n")
-        f.write(h7b_df[h7b_df['sig_better']].to_string())
+    f.write("Interpretation Tips:\n")
+    f.write("1) For H7a: Look at 'overall_digital_presence:C(startup_stage)[T.x]'.\n")
+    f.write("   - If those interaction coefficients are +/- and significant, it indicates\n")
+    f.write("     how digital presence differs in effect from the baseline stage.\n\n")
+    f.write("2) For H7b: Look at each 'metric:C(startup_stage)[T.x]' term.\n")
+    f.write("   - Positive (and significant) => that metric's slope is stronger in stage x\n")
+    f.write("     than in the baseline stage (usually Pre-Seed).\n")
+    f.write("   - Negative => weaker slope than the baseline.\n")
+
+print("Analysis complete. Check 'results/stage_specific_analysis' for outputs.")
