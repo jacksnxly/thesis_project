@@ -17,6 +17,8 @@
 
 This project investigates how an entrepreneur's digital presence influences their success in securing venture capital (VC) funding in Germany. By analyzing data from 761 German startups and conducting interviews with 18 German VCs, the study explores various aspects of digital identity, including professional networks, online reputation, and social media engagement, to understand their correlation with funding outcomes.
 
+Note: If you want the questionnaire dataset, send a request to jackson.ly@fs-students.de
+
 ## Motivation
 
 In today's digital age, an entrepreneur's online presence can significantly impact their ability to attract investment. This study aims to quantify and qualify the relationship between digital identity metrics and VC funding success, providing insights into the preferences and evaluation criteria of German venture capitalists.
